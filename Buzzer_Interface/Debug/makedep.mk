@@ -2,13 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-Buzzer.c
+HAL\Buzzer\Buzzer.c
 
-DIO.c
+HAL\LED\LED.c
 
-LED.c
+HAL\SW\SW.c
 
 main.c
 
-SW.c
+MCAL\DIO\DIO.c
 
