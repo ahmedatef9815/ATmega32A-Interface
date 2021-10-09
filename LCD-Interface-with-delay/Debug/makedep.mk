@@ -2,9 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-DIO.c
-
-LCD.c
+HAL\LCD\LCD.c
 
 main.c
+
+MCAL\DIO\DIO.c
 

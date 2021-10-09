@@ -5,7 +5,7 @@ d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4
 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                               main.o (__do_copy_data)
 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
-                              LCD.o (__itoa_ncheck)
+                              HAL/LCD/LCD.o (__itoa_ncheck)
 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
                               d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o) (__utoa_common)
 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
@@ -15,25 +15,25 @@ Discarded input sections
 
  .data          0x00000000        0x0 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .bss           0x00000000        0x0 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .text          0x00000000        0x0 DIO.o
- .data          0x00000000        0x0 DIO.o
- .bss           0x00000000        0x0 DIO.o
- .text.Dio_ChannelRead
-                0x00000000       0x2a DIO.o
- .text.Dio_ChannelToggle
-                0x00000000       0x18 DIO.o
- .text.Dio_PortWrite
-                0x00000000        0x6 DIO.o
- .text.Dio_PortRead
-                0x00000000        0x6 DIO.o
- .text          0x00000000        0x0 LCD.o
- .data          0x00000000        0x0 LCD.o
- .bss           0x00000000        0x0 LCD.o
+ .text          0x00000000        0x0 HAL/LCD/LCD.o
+ .data          0x00000000        0x0 HAL/LCD/LCD.o
+ .bss           0x00000000        0x0 HAL/LCD/LCD.o
  .text.LCD_Clear
-                0x00000000        0x8 LCD.o
+                0x00000000        0x8 HAL/LCD/LCD.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 MCAL/DIO/DIO.o
+ .data          0x00000000        0x0 MCAL/DIO/DIO.o
+ .bss           0x00000000        0x0 MCAL/DIO/DIO.o
+ .text.Dio_ChannelRead
+                0x00000000       0x2a MCAL/DIO/DIO.o
+ .text.Dio_ChannelToggle
+                0x00000000       0x18 MCAL/DIO/DIO.o
+ .text.Dio_PortWrite
+                0x00000000        0x6 MCAL/DIO/DIO.o
+ .text.Dio_PortRead
+                0x00000000        0x6 MCAL/DIO/DIO.o
  .text          0x00000000        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -91,9 +91,9 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
-LOAD DIO.o
-LOAD LCD.o
+LOAD HAL/LCD/LCD.o
 LOAD main.o
+LOAD MCAL/DIO/DIO.o
 START GROUP
 LOAD d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -283,32 +283,32 @@ END GROUP
                 0x0000007e                __vector_20
                 0x00000082                . = ALIGN (0x2)
  *(.text.*)
- .text.Dio_ChannelDirectionSet
-                0x00000082       0x3c DIO.o
-                0x00000082                Dio_ChannelDirectionSet
- .text.Dio_ChannelWrite
-                0x000000be       0x3c DIO.o
-                0x000000be                Dio_ChannelWrite
  .text.LCD_Send_Instruction
-                0x000000fa       0xc4 LCD.o
-                0x000000fa                LCD_Send_Instruction
+                0x00000082       0xc4 HAL/LCD/LCD.o
+                0x00000082                LCD_Send_Instruction
  .text.LCD_Init
-                0x000001be       0x56 LCD.o
-                0x000001be                LCD_Init
+                0x00000146       0x56 HAL/LCD/LCD.o
+                0x00000146                LCD_Init
  .text.LCD_RowCol_Select
-                0x00000214       0x26 LCD.o
-                0x00000214                LCD_RowCol_Select
+                0x0000019c       0x26 HAL/LCD/LCD.o
+                0x0000019c                LCD_RowCol_Select
  .text.LCD_Char_Display
-                0x0000023a       0xc2 LCD.o
-                0x0000023a                LCD_Char_Display
+                0x000001c2       0xc2 HAL/LCD/LCD.o
+                0x000001c2                LCD_Char_Display
  .text.LCD_String_Display
-                0x000002fc       0x1a LCD.o
-                0x000002fc                LCD_String_Display
+                0x00000284       0x1a HAL/LCD/LCD.o
+                0x00000284                LCD_String_Display
  .text.LCD_Integer_Display
-                0x00000316       0x3e LCD.o
-                0x00000316                LCD_Integer_Display
- .text.main     0x00000354       0x38 main.o
-                0x00000354                main
+                0x0000029e       0x3e HAL/LCD/LCD.o
+                0x0000029e                LCD_Integer_Display
+ .text.main     0x000002dc       0x38 main.o
+                0x000002dc                main
+ .text.Dio_ChannelDirectionSet
+                0x00000314       0x3c MCAL/DIO/DIO.o
+                0x00000314                Dio_ChannelDirectionSet
+ .text.Dio_ChannelWrite
+                0x00000350       0x3c MCAL/DIO/DIO.o
+                0x00000350                Dio_ChannelWrite
  .text.avr-libc
                 0x0000038c       0x16 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
                 0x0000038c                __itoa_ncheck
@@ -415,10 +415,10 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 DIO.o
+ .comment       0x00000000       0x30 HAL/LCD/LCD.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 LCD.o
  .comment       0x00000030       0x31 main.o
+ .comment       0x00000030       0x31 MCAL/DIO/DIO.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c
@@ -443,11 +443,11 @@ END GROUP
 .debug_aranges  0x00000000       0xb8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 DIO.o
+                0x00000000       0x50 HAL/LCD/LCD.o
  .debug_aranges
-                0x00000048       0x50 LCD.o
+                0x00000050       0x20 main.o
  .debug_aranges
-                0x00000098       0x20 main.o
+                0x00000070       0x48 MCAL/DIO/DIO.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -455,44 +455,44 @@ END GROUP
 .debug_info     0x00000000     0x1277
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_info    0x000004e6      0x2a2 DIO.o
- .debug_info    0x00000788      0x96a LCD.o
- .debug_info    0x000010f2      0x185 main.o
+ .debug_info    0x000004e6      0x96a HAL/LCD/LCD.o
+ .debug_info    0x00000e50      0x185 main.o
+ .debug_info    0x00000fd5      0x2a2 MCAL/DIO/DIO.o
 
 .debug_abbrev   0x00000000      0x801
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_abbrev  0x000004a3       0xd3 DIO.o
- .debug_abbrev  0x00000576      0x1ff LCD.o
- .debug_abbrev  0x00000775       0x8c main.o
+ .debug_abbrev  0x000004a3      0x1ff HAL/LCD/LCD.o
+ .debug_abbrev  0x000006a2       0x8c main.o
+ .debug_abbrev  0x0000072e       0xd3 MCAL/DIO/DIO.o
 
-.debug_line     0x00000000      0x5be
+.debug_line     0x00000000      0x5fc
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_line    0x00000116       0xf2 DIO.o
- .debug_line    0x00000208      0x334 LCD.o
- .debug_line    0x0000053c       0x82 main.o
+ .debug_line    0x00000116      0x353 HAL/LCD/LCD.o
+ .debug_line    0x00000469       0x8d main.o
+ .debug_line    0x000004f6      0x106 MCAL/DIO/DIO.o
 
 .debug_frame    0x00000000      0x14c
  *(.debug_frame)
- .debug_frame   0x00000000       0x74 DIO.o
- .debug_frame   0x00000074       0xb4 LCD.o
- .debug_frame   0x00000128       0x24 main.o
+ .debug_frame   0x00000000       0xb4 HAL/LCD/LCD.o
+ .debug_frame   0x000000b4       0x24 main.o
+ .debug_frame   0x000000d8       0x74 MCAL/DIO/DIO.o
 
-.debug_str      0x00000000      0x5b1
+.debug_str      0x00000000      0x5be
  *(.debug_str)
  .debug_str     0x00000000      0x196 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_str     0x00000196      0x2dd DIO.o
-                                0x30b (size before relaxing)
- .debug_str     0x00000473      0x12d LCD.o
-                                0x38a (size before relaxing)
- .debug_str     0x000005a0       0x11 main.o
+ .debug_str     0x00000196      0x34b HAL/LCD/LCD.o
+                                0x390 (size before relaxing)
+ .debug_str     0x000004e1       0x11 main.o
                                 0x21e (size before relaxing)
+ .debug_str     0x000004f2       0xcc MCAL/DIO/DIO.o
+                                0x312 (size before relaxing)
 
 .debug_loc      0x00000000      0x7a2
  *(.debug_loc)
- .debug_loc     0x00000000       0xc4 DIO.o
- .debug_loc     0x000000c4      0x6de LCD.o
+ .debug_loc     0x00000000      0x6de HAL/LCD/LCD.o
+ .debug_loc     0x000006de       0xc4 MCAL/DIO/DIO.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -514,9 +514,9 @@ END GROUP
 
 .debug_ranges   0x00000000       0x88
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x38 DIO.o
- .debug_ranges  0x00000038       0x40 LCD.o
- .debug_ranges  0x00000078       0x10 main.o
+ .debug_ranges  0x00000000       0x40 HAL/LCD/LCD.o
+ .debug_ranges  0x00000040       0x10 main.o
+ .debug_ranges  0x00000050       0x38 MCAL/DIO/DIO.o
 
 .debug_macro
  *(.debug_macro)
