@@ -3,28 +3,28 @@ Archive member included to satisfy reference by file (symbol)
 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o (exit)
 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
-                              SW.o (__do_clear_bss)
+                              HAL/SW/SW.o (__do_clear_bss)
 
 Discarded input sections
 
  .data          0x00000000        0x0 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .bss           0x00000000        0x0 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .text          0x00000000        0x0 DIO.o
- .data          0x00000000        0x0 DIO.o
- .bss           0x00000000        0x0 DIO.o
- .text.Dio_PortWrite
-                0x00000000        0x6 DIO.o
- .text.Dio_PortRead
-                0x00000000        0x6 DIO.o
- .text          0x00000000        0x0 LED.o
- .data          0x00000000        0x0 LED.o
- .bss           0x00000000        0x0 LED.o
+ .text          0x00000000        0x0 HAL/LED/LED.o
+ .data          0x00000000        0x0 HAL/LED/LED.o
+ .bss           0x00000000        0x0 HAL/LED/LED.o
+ .text          0x00000000        0x0 HAL/SW/SW.o
+ .data          0x00000000        0x0 HAL/SW/SW.o
+ .bss           0x00000000        0x0 HAL/SW/SW.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text          0x00000000        0x0 SW.o
- .data          0x00000000        0x0 SW.o
- .bss           0x00000000        0x0 SW.o
+ .text          0x00000000        0x0 MCAL/DIO/DIO.o
+ .data          0x00000000        0x0 MCAL/DIO/DIO.o
+ .bss           0x00000000        0x0 MCAL/DIO/DIO.o
+ .text.Dio_PortWrite
+                0x00000000        0x6 MCAL/DIO/DIO.o
+ .text.Dio_PortRead
+                0x00000000        0x6 MCAL/DIO/DIO.o
  .text          0x00000000        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -73,10 +73,10 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
-LOAD DIO.o
-LOAD LED.o
+LOAD HAL/LED/LED.o
+LOAD HAL/SW/SW.o
 LOAD main.o
-LOAD SW.o
+LOAD MCAL/DIO/DIO.o
 START GROUP
 LOAD d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -266,32 +266,32 @@ END GROUP
                 0x00000078                __vector_20
                 0x0000007c                . = ALIGN (0x2)
  *(.text.*)
- .text.Dio_ChannelDirectionSet
-                0x0000007c       0x3c DIO.o
-                0x0000007c                Dio_ChannelDirectionSet
- .text.Dio_ChannelRead
-                0x000000b8       0x2a DIO.o
-                0x000000b8                Dio_ChannelRead
- .text.Dio_ChannelWrite
-                0x000000e2       0x3c DIO.o
-                0x000000e2                Dio_ChannelWrite
- .text.Dio_ChannelToggle
-                0x0000011e       0x18 DIO.o
-                0x0000011e                Dio_ChannelToggle
  .text.Led_Init
-                0x00000136        0x8 LED.o
-                0x00000136                Led_Init
+                0x0000007c        0x8 HAL/LED/LED.o
+                0x0000007c                Led_Init
  .text.Led_State_Set
-                0x0000013e       0x10 LED.o
-                0x0000013e                Led_State_Set
- .text.main     0x0000014e       0x30 main.o
-                0x0000014e                main
+                0x00000084       0x10 HAL/LED/LED.o
+                0x00000084                Led_State_Set
  .text.Switch_Init
-                0x0000017e        0x8 SW.o
-                0x0000017e                Switch_Init
+                0x00000094        0x8 HAL/SW/SW.o
+                0x00000094                Switch_Init
  .text.Switch_Get_State
-                0x00000186       0x48 SW.o
-                0x00000186                Switch_Get_State
+                0x0000009c       0x48 HAL/SW/SW.o
+                0x0000009c                Switch_Get_State
+ .text.main     0x000000e4       0x30 main.o
+                0x000000e4                main
+ .text.Dio_ChannelDirectionSet
+                0x00000114       0x3c MCAL/DIO/DIO.o
+                0x00000114                Dio_ChannelDirectionSet
+ .text.Dio_ChannelRead
+                0x00000150       0x2a MCAL/DIO/DIO.o
+                0x00000150                Dio_ChannelRead
+ .text.Dio_ChannelWrite
+                0x0000017a       0x3c MCAL/DIO/DIO.o
+                0x0000017a                Dio_ChannelWrite
+ .text.Dio_ChannelToggle
+                0x000001b6       0x18 MCAL/DIO/DIO.o
+                0x000001b6                Dio_ChannelToggle
                 0x000001ce                . = ALIGN (0x2)
  *(.fini9)
  .fini9         0x000001ce        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -336,7 +336,7 @@ END GROUP
  *(.bss)
  *(.bss*)
  .bss.SwitchPreviousState
-                0x00800060        0x1 SW.o
+                0x00800060        0x1 HAL/SW/SW.o
                 0x00800060                SwitchPreviousState
  *(COMMON)
                 0x00800061                PROVIDE (__bss_end, .)
@@ -389,11 +389,11 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 DIO.o
+ .comment       0x00000000       0x30 HAL/LED/LED.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 LED.o
+ .comment       0x00000030       0x31 HAL/SW/SW.o
  .comment       0x00000030       0x31 main.o
- .comment       0x00000030       0x31 SW.o
+ .comment       0x00000030       0x31 MCAL/DIO/DIO.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c
@@ -418,13 +418,13 @@ END GROUP
 .debug_aranges  0x00000000       0xb8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 DIO.o
+                0x00000000       0x28 HAL/LED/LED.o
  .debug_aranges
-                0x00000048       0x28 LED.o
+                0x00000028       0x28 HAL/SW/SW.o
  .debug_aranges
-                0x00000070       0x20 main.o
+                0x00000050       0x20 main.o
  .debug_aranges
-                0x00000090       0x28 SW.o
+                0x00000070       0x48 MCAL/DIO/DIO.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -432,52 +432,52 @@ END GROUP
 .debug_info     0x00000000      0xe5a
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_info    0x000004e6      0x2a2 DIO.o
- .debug_info    0x00000788      0x1ee LED.o
- .debug_info    0x00000976      0x1f7 main.o
- .debug_info    0x00000b6d      0x2ed SW.o
+ .debug_info    0x000004e6      0x1ee HAL/LED/LED.o
+ .debug_info    0x000006d4      0x2ed HAL/SW/SW.o
+ .debug_info    0x000009c1      0x1f7 main.o
+ .debug_info    0x00000bb8      0x2a2 MCAL/DIO/DIO.o
 
 .debug_abbrev   0x00000000      0x85a
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_abbrev  0x000004a3       0xd3 DIO.o
- .debug_abbrev  0x00000576       0xc0 LED.o
- .debug_abbrev  0x00000636       0xc0 main.o
- .debug_abbrev  0x000006f6      0x164 SW.o
+ .debug_abbrev  0x000004a3       0xc0 HAL/LED/LED.o
+ .debug_abbrev  0x00000563      0x164 HAL/SW/SW.o
+ .debug_abbrev  0x000006c7       0xc0 main.o
+ .debug_abbrev  0x00000787       0xd3 MCAL/DIO/DIO.o
 
-.debug_line     0x00000000      0x441
+.debug_line     0x00000000      0x4b4
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_line    0x00000116       0xf2 DIO.o
- .debug_line    0x00000208       0x7f LED.o
- .debug_line    0x00000287       0x75 main.o
- .debug_line    0x000002fc      0x145 SW.o
+ .debug_line    0x00000116       0x9e HAL/LED/LED.o
+ .debug_line    0x000001b4      0x163 HAL/SW/SW.o
+ .debug_line    0x00000317       0x97 main.o
+ .debug_line    0x000003ae      0x106 MCAL/DIO/DIO.o
 
 .debug_frame    0x00000000      0x110
  *(.debug_frame)
- .debug_frame   0x00000000       0x74 DIO.o
- .debug_frame   0x00000074       0x34 LED.o
- .debug_frame   0x000000a8       0x24 main.o
- .debug_frame   0x000000cc       0x44 SW.o
+ .debug_frame   0x00000000       0x34 HAL/LED/LED.o
+ .debug_frame   0x00000034       0x44 HAL/SW/SW.o
+ .debug_frame   0x00000078       0x24 main.o
+ .debug_frame   0x0000009c       0x74 MCAL/DIO/DIO.o
 
-.debug_str      0x00000000      0x5c9
+.debug_str      0x00000000      0x5db
  *(.debug_str)
  .debug_str     0x00000000      0x196 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_str     0x00000196      0x2c1 DIO.o
-                                0x2f5 (size before relaxing)
- .debug_str     0x00000457       0x76 LED.o
-                                0x265 (size before relaxing)
- .debug_str     0x000004cd       0x6f main.o
+ .debug_str     0x00000196      0x237 HAL/LED/LED.o
+                                0x26b (size before relaxing)
+ .debug_str     0x000003cd      0x162 HAL/SW/SW.o
+                                0x335 (size before relaxing)
+ .debug_str     0x0000052f       0x1a main.o
                                 0x258 (size before relaxing)
- .debug_str     0x0000053c       0x8d SW.o
-                                0x330 (size before relaxing)
+ .debug_str     0x00000549       0x92 MCAL/DIO/DIO.o
+                                0x2fc (size before relaxing)
 
 .debug_loc      0x00000000      0x322
  *(.debug_loc)
- .debug_loc     0x00000000       0xc4 DIO.o
- .debug_loc     0x000000c4       0xff LED.o
- .debug_loc     0x000001c3       0x13 main.o
- .debug_loc     0x000001d6      0x14c SW.o
+ .debug_loc     0x00000000       0xff HAL/LED/LED.o
+ .debug_loc     0x000000ff      0x14c HAL/SW/SW.o
+ .debug_loc     0x0000024b       0x13 main.o
+ .debug_loc     0x0000025e       0xc4 MCAL/DIO/DIO.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -499,10 +499,10 @@ END GROUP
 
 .debug_ranges   0x00000000       0x78
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x38 DIO.o
- .debug_ranges  0x00000038       0x18 LED.o
- .debug_ranges  0x00000050       0x10 main.o
- .debug_ranges  0x00000060       0x18 SW.o
+ .debug_ranges  0x00000000       0x18 HAL/LED/LED.o
+ .debug_ranges  0x00000018       0x18 HAL/SW/SW.o
+ .debug_ranges  0x00000030       0x10 main.o
+ .debug_ranges  0x00000040       0x38 MCAL/DIO/DIO.o
 
 .debug_macro
  *(.debug_macro)

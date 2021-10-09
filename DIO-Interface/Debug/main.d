@@ -1,5 +1,6 @@
-main.d main.o: .././main.c .././Macros.h .././Std_Types.h .././LED.h \
- .././DIO.h .././SW.h .././ATmega32A_Configuration.h \
+main.d main.o: .././main.c ../Utilities/Macros.h ../Utilities/Std_Types.h \
+ ../HAL/LED/LED.h ../MCAL/DIO/DIO.h ../HAL/SW/SW.h \
+ ../Utilities/ATmega32A_Configuration.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -7,17 +8,17 @@ main.d main.o: .././main.c .././Macros.h .././Std_Types.h .././LED.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././Macros.h:
+../Utilities/Macros.h:
 
-.././Std_Types.h:
+../Utilities/Std_Types.h:
 
-.././LED.h:
+../HAL/LED/LED.h:
 
-.././DIO.h:
+../MCAL/DIO/DIO.h:
 
-.././SW.h:
+../HAL/SW/SW.h:
 
-.././ATmega32A_Configuration.h:
+../Utilities/ATmega32A_Configuration.h:
 
 d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
