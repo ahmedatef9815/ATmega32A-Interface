@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000855  00000000  00000000  0000118a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000453  00000000  00000000  000019df  2**0
+  8 .debug_line   000004ca  00000000  00000000  000019df  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000110  00000000  00000000  00001e34  2**2
+  9 .debug_frame  00000110  00000000  00000000  00001eac  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000005b1  00000000  00000000  00001f44  2**0
+ 10 .debug_str    000005c2  00000000  00000000  00001fbc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000278  00000000  00000000  000024f5  2**0
+ 11 .debug_loc    00000278  00000000  00000000  0000257e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000078  00000000  00000000  0000276d  2**0
+ 12 .debug_ranges 00000078  00000000  00000000  000027f6  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -76,282 +76,282 @@ Disassembly of section .text:
   6a:	a1 36       	cpi	r26, 0x61	; 97
   6c:	b2 07       	cpc	r27, r18
   6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
-  70:	0e 94 8f 00 	call	0x11e	; 0x11e <main>
+  70:	0e 94 74 00 	call	0xe8	; 0xe8 <main>
   74:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <_exit>
 
 00000078 <__bad_interrupt>:
   78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-0000007c <Dio_ChannelDirectionSet>:
-#include "ATmega32A_Configuration.h"
-
-void Dio_ChannelDirectionSet(volatile uint8* port_reg, DioPinEnum_t channel, DioPinDirectionEnum_t direction)
-{
-
-	switch(direction)
-  7c:	44 23       	and	r20, r20
-  7e:	19 f0       	breq	.+6      	; 0x86 <Dio_ChannelDirectionSet+0xa>
-  80:	41 30       	cpi	r20, 0x01	; 1
-  82:	71 f0       	breq	.+28     	; 0xa0 <Dio_ChannelDirectionSet+0x24>
-  84:	08 95       	ret
-	{
-		case DIO_INPUT:
-			CLEAR_BIT(*port_reg, channel);
-  86:	fc 01       	movw	r30, r24
-  88:	40 81       	ld	r20, Z
-  8a:	21 e0       	ldi	r18, 0x01	; 1
-  8c:	30 e0       	ldi	r19, 0x00	; 0
-  8e:	02 c0       	rjmp	.+4      	; 0x94 <Dio_ChannelDirectionSet+0x18>
-  90:	22 0f       	add	r18, r18
-  92:	33 1f       	adc	r19, r19
-  94:	6a 95       	dec	r22
-  96:	e2 f7       	brpl	.-8      	; 0x90 <Dio_ChannelDirectionSet+0x14>
-  98:	20 95       	com	r18
-  9a:	24 23       	and	r18, r20
-  9c:	20 83       	st	Z, r18
-			break;
-  9e:	08 95       	ret
-		case DIO_OUTPUT:
-			SET_BIT(*port_reg, channel);
-  a0:	fc 01       	movw	r30, r24
-  a2:	40 81       	ld	r20, Z
-  a4:	21 e0       	ldi	r18, 0x01	; 1
-  a6:	30 e0       	ldi	r19, 0x00	; 0
-  a8:	02 c0       	rjmp	.+4      	; 0xae <Dio_ChannelDirectionSet+0x32>
-  aa:	22 0f       	add	r18, r18
-  ac:	33 1f       	adc	r19, r19
-  ae:	6a 95       	dec	r22
-  b0:	e2 f7       	brpl	.-8      	; 0xaa <Dio_ChannelDirectionSet+0x2e>
-  b2:	24 2b       	or	r18, r20
-  b4:	20 83       	st	Z, r18
-  b6:	08 95       	ret
-
-000000b8 <Dio_ChannelRead>:
-}
-
-
-DioPinStateEnum_t Dio_ChannelRead(volatile uint8* port_reg, DioPinEnum_t channel)
-{
-	DioPinStateEnum_t u8LocalPinValue = READ_BIT(*port_reg, channel);
-  b8:	fc 01       	movw	r30, r24
-  ba:	40 81       	ld	r20, Z
-  bc:	81 e0       	ldi	r24, 0x01	; 1
-  be:	90 e0       	ldi	r25, 0x00	; 0
-  c0:	9c 01       	movw	r18, r24
-  c2:	06 2e       	mov	r0, r22
-  c4:	02 c0       	rjmp	.+4      	; 0xca <Dio_ChannelRead+0x12>
-  c6:	22 0f       	add	r18, r18
-  c8:	33 1f       	adc	r19, r19
-  ca:	0a 94       	dec	r0
-  cc:	e2 f7       	brpl	.-8      	; 0xc6 <Dio_ChannelRead+0xe>
-  ce:	84 2f       	mov	r24, r20
-  d0:	90 e0       	ldi	r25, 0x00	; 0
-  d2:	82 23       	and	r24, r18
-  d4:	93 23       	and	r25, r19
-  d6:	02 c0       	rjmp	.+4      	; 0xdc <Dio_ChannelRead+0x24>
-  d8:	96 95       	lsr	r25
-  da:	87 95       	ror	r24
-  dc:	6a 95       	dec	r22
-  de:	e2 f7       	brpl	.-8      	; 0xd8 <Dio_ChannelRead+0x20>
-	return (u8LocalPinValue);
-}
-  e0:	08 95       	ret
-
-000000e2 <Dio_ChannelWrite>:
-
-
-void Dio_ChannelWrite(volatile uint8* port_reg, DioPinEnum_t channel, DioPinStateEnum_t state)
-{
-	switch(state)
-  e2:	44 23       	and	r20, r20
-  e4:	19 f0       	breq	.+6      	; 0xec <Dio_ChannelWrite+0xa>
-  e6:	41 30       	cpi	r20, 0x01	; 1
-  e8:	71 f0       	breq	.+28     	; 0x106 <Dio_ChannelWrite+0x24>
-  ea:	08 95       	ret
-	{
-		case DIO_LOW:
-			CLEAR_BIT(*port_reg, channel);
-  ec:	fc 01       	movw	r30, r24
-  ee:	40 81       	ld	r20, Z
-  f0:	21 e0       	ldi	r18, 0x01	; 1
-  f2:	30 e0       	ldi	r19, 0x00	; 0
-  f4:	02 c0       	rjmp	.+4      	; 0xfa <Dio_ChannelWrite+0x18>
-  f6:	22 0f       	add	r18, r18
-  f8:	33 1f       	adc	r19, r19
-  fa:	6a 95       	dec	r22
-  fc:	e2 f7       	brpl	.-8      	; 0xf6 <Dio_ChannelWrite+0x14>
-  fe:	20 95       	com	r18
- 100:	24 23       	and	r18, r20
- 102:	20 83       	st	Z, r18
-			break;
- 104:	08 95       	ret
-		case DIO_HIGH:
-			SET_BIT(*port_reg, channel);
- 106:	fc 01       	movw	r30, r24
- 108:	40 81       	ld	r20, Z
- 10a:	21 e0       	ldi	r18, 0x01	; 1
- 10c:	30 e0       	ldi	r19, 0x00	; 0
- 10e:	02 c0       	rjmp	.+4      	; 0x114 <Dio_ChannelWrite+0x32>
- 110:	22 0f       	add	r18, r18
- 112:	33 1f       	adc	r19, r19
- 114:	6a 95       	dec	r22
- 116:	e2 f7       	brpl	.-8      	; 0x110 <Dio_ChannelWrite+0x2e>
- 118:	24 2b       	or	r18, r20
- 11a:	20 83       	st	Z, r18
- 11c:	08 95       	ret
-
-0000011e <main>:
-#include "ATmega32A_Configuration.h"
-
-
-int main(void)
-{
-	Switch_Init(SW0_DIR_REG, SW_0);
- 11e:	60 e0       	ldi	r22, 0x00	; 0
- 120:	87 e3       	ldi	r24, 0x37	; 55
- 122:	90 e0       	ldi	r25, 0x00	; 0
- 124:	0e 94 c0 00 	call	0x180	; 0x180 <Switch_Init>
-	Switch_Init(SW1_DIR_REG, SW_1);
- 128:	66 e0       	ldi	r22, 0x06	; 6
- 12a:	81 e3       	ldi	r24, 0x31	; 49
- 12c:	90 e0       	ldi	r25, 0x00	; 0
- 12e:	0e 94 c0 00 	call	0x180	; 0x180 <Switch_Init>
-	Relay_init();
- 132:	0e 94 b2 00 	call	0x164	; 0x164 <Relay_init>
-	
-	while (1)
-	{
-		SwitchStateEnum_t sw0_state = Switch_Get_State(SW0_INP_REG, SW_0);
- 136:	60 e0       	ldi	r22, 0x00	; 0
- 138:	86 e3       	ldi	r24, 0x36	; 54
- 13a:	90 e0       	ldi	r25, 0x00	; 0
- 13c:	0e 94 c4 00 	call	0x188	; 0x188 <Switch_Get_State>
- 140:	c8 2f       	mov	r28, r24
-		SwitchStateEnum_t sw1_state = Switch_Get_State(SW1_INP_REG, SW_1);
- 142:	66 e0       	ldi	r22, 0x06	; 6
- 144:	80 e3       	ldi	r24, 0x30	; 48
- 146:	90 e0       	ldi	r25, 0x00	; 0
- 148:	0e 94 c4 00 	call	0x188	; 0x188 <Switch_Get_State>
-		if(sw0_state == SW_PRESSED)
- 14c:	c1 30       	cpi	r28, 0x01	; 1
- 14e:	21 f4       	brne	.+8      	; 0x158 <main+0x3a>
-		{
-			Relay_Set_State(RELAY_ON);
- 150:	81 e0       	ldi	r24, 0x01	; 1
- 152:	0e 94 b9 00 	call	0x172	; 0x172 <Relay_Set_State>
- 156:	ef cf       	rjmp	.-34     	; 0x136 <main+0x18>
-		}
-		else if(sw1_state == SW_PRESSED)
- 158:	81 30       	cpi	r24, 0x01	; 1
- 15a:	69 f7       	brne	.-38     	; 0x136 <main+0x18>
-		{
-			Relay_Set_State(RELAY_OFF);
- 15c:	80 e0       	ldi	r24, 0x00	; 0
- 15e:	0e 94 b9 00 	call	0x172	; 0x172 <Relay_Set_State>
- 162:	e9 cf       	rjmp	.-46     	; 0x136 <main+0x18>
-
-00000164 <Relay_init>:
+0000007c <Relay_init>:
 #include "Relay.h"
 
 
 void Relay_init()
 {
 	Dio_ChannelDirectionSet(RELAY_DIR_REG, RELAY_PIN, DIO_OUTPUT);
- 164:	41 e0       	ldi	r20, 0x01	; 1
- 166:	62 e0       	ldi	r22, 0x02	; 2
- 168:	8a e3       	ldi	r24, 0x3A	; 58
- 16a:	90 e0       	ldi	r25, 0x00	; 0
- 16c:	0e 94 3e 00 	call	0x7c	; 0x7c <Dio_ChannelDirectionSet>
- 170:	08 95       	ret
+  7c:	41 e0       	ldi	r20, 0x01	; 1
+  7e:	62 e0       	ldi	r22, 0x02	; 2
+  80:	8a e3       	ldi	r24, 0x3A	; 58
+  82:	90 e0       	ldi	r25, 0x00	; 0
+  84:	0e 94 97 00 	call	0x12e	; 0x12e <Dio_ChannelDirectionSet>
+  88:	08 95       	ret
 
-00000172 <Relay_Set_State>:
+0000008a <Relay_Set_State>:
 }
 
 void Relay_Set_State(RelayStateEnum_t state)
 {
 	Dio_ChannelWrite(RELAY_OUT_REG, RELAY_PIN, state);
- 172:	48 2f       	mov	r20, r24
- 174:	62 e0       	ldi	r22, 0x02	; 2
- 176:	8b e3       	ldi	r24, 0x3B	; 59
- 178:	90 e0       	ldi	r25, 0x00	; 0
- 17a:	0e 94 71 00 	call	0xe2	; 0xe2 <Dio_ChannelWrite>
- 17e:	08 95       	ret
+  8a:	48 2f       	mov	r20, r24
+  8c:	62 e0       	ldi	r22, 0x02	; 2
+  8e:	8b e3       	ldi	r24, 0x3B	; 59
+  90:	90 e0       	ldi	r25, 0x00	; 0
+  92:	0e 94 ca 00 	call	0x194	; 0x194 <Dio_ChannelWrite>
+  96:	08 95       	ret
 
-00000180 <Switch_Init>:
+00000098 <Switch_Init>:
 
 DioPinStateEnum_t SwitchPreviousState = SW_RELEASED;
 
 void Switch_Init(volatile uint8* sw_reg, SwitchEnum_t sw_no)
 {
 	Dio_ChannelDirectionSet(sw_reg, sw_no, DIO_INPUT);
- 180:	40 e0       	ldi	r20, 0x00	; 0
- 182:	0e 94 3e 00 	call	0x7c	; 0x7c <Dio_ChannelDirectionSet>
- 186:	08 95       	ret
+  98:	40 e0       	ldi	r20, 0x00	; 0
+  9a:	0e 94 97 00 	call	0x12e	; 0x12e <Dio_ChannelDirectionSet>
+  9e:	08 95       	ret
 
-00000188 <Switch_Get_State>:
+000000a0 <Switch_Get_State>:
 }
 
 
 SwitchStateEnum_t Switch_Get_State(volatile uint8* sw_reg, SwitchEnum_t sw_no)
 {
- 188:	1f 93       	push	r17
- 18a:	cf 93       	push	r28
- 18c:	df 93       	push	r29
- 18e:	ec 01       	movw	r28, r24
- 190:	16 2f       	mov	r17, r22
+  a0:	1f 93       	push	r17
+  a2:	cf 93       	push	r28
+  a4:	df 93       	push	r29
+  a6:	ec 01       	movw	r28, r24
+  a8:	16 2f       	mov	r17, r22
 	SwitchStateEnum_t SwitchLocalState = SW_RELEASED;
 	if(SwitchPreviousState != Dio_ChannelRead(sw_reg, sw_no))
- 192:	0e 94 5c 00 	call	0xb8	; 0xb8 <Dio_ChannelRead>
- 196:	90 91 60 00 	lds	r25, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
- 19a:	89 17       	cp	r24, r25
- 19c:	91 f0       	breq	.+36     	; 0x1c2 <Switch_Get_State+0x3a>
+  aa:	0e 94 b5 00 	call	0x16a	; 0x16a <Dio_ChannelRead>
+  ae:	90 91 60 00 	lds	r25, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  b2:	89 17       	cp	r24, r25
+  b4:	91 f0       	breq	.+36     	; 0xda <Switch_Get_State+0x3a>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 19e:	2f ef       	ldi	r18, 0xFF	; 255
- 1a0:	89 ef       	ldi	r24, 0xF9	; 249
- 1a2:	90 e0       	ldi	r25, 0x00	; 0
- 1a4:	21 50       	subi	r18, 0x01	; 1
- 1a6:	80 40       	sbci	r24, 0x00	; 0
- 1a8:	90 40       	sbci	r25, 0x00	; 0
- 1aa:	e1 f7       	brne	.-8      	; 0x1a4 <Switch_Get_State+0x1c>
- 1ac:	00 c0       	rjmp	.+0      	; 0x1ae <Switch_Get_State+0x26>
- 1ae:	00 00       	nop
+  b6:	2f ef       	ldi	r18, 0xFF	; 255
+  b8:	89 ef       	ldi	r24, 0xF9	; 249
+  ba:	90 e0       	ldi	r25, 0x00	; 0
+  bc:	21 50       	subi	r18, 0x01	; 1
+  be:	80 40       	sbci	r24, 0x00	; 0
+  c0:	90 40       	sbci	r25, 0x00	; 0
+  c2:	e1 f7       	brne	.-8      	; 0xbc <Switch_Get_State+0x1c>
+  c4:	00 c0       	rjmp	.+0      	; 0xc6 <Switch_Get_State+0x26>
+  c6:	00 00       	nop
 	{
 		_delay_ms(DEBOUNCE_PERIOD);
 		SwitchPreviousState = Dio_ChannelRead(sw_reg, sw_no);
- 1b0:	61 2f       	mov	r22, r17
- 1b2:	ce 01       	movw	r24, r28
- 1b4:	0e 94 5c 00 	call	0xb8	; 0xb8 <Dio_ChannelRead>
- 1b8:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+  c8:	61 2f       	mov	r22, r17
+  ca:	ce 01       	movw	r24, r28
+  cc:	0e 94 b5 00 	call	0x16a	; 0x16a <Dio_ChannelRead>
+  d0:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
 		if(SwitchPreviousState == DIO_HIGH)
- 1bc:	81 30       	cpi	r24, 0x01	; 1
- 1be:	19 f4       	brne	.+6      	; 0x1c6 <Switch_Get_State+0x3e>
- 1c0:	03 c0       	rjmp	.+6      	; 0x1c8 <Switch_Get_State+0x40>
+  d4:	81 30       	cpi	r24, 0x01	; 1
+  d6:	19 f4       	brne	.+6      	; 0xde <Switch_Get_State+0x3e>
+  d8:	03 c0       	rjmp	.+6      	; 0xe0 <Switch_Get_State+0x40>
 }
 
 
 SwitchStateEnum_t Switch_Get_State(volatile uint8* sw_reg, SwitchEnum_t sw_no)
 {
 	SwitchStateEnum_t SwitchLocalState = SW_RELEASED;
- 1c2:	80 e0       	ldi	r24, 0x00	; 0
- 1c4:	01 c0       	rjmp	.+2      	; 0x1c8 <Switch_Get_State+0x40>
+  da:	80 e0       	ldi	r24, 0x00	; 0
+  dc:	01 c0       	rjmp	.+2      	; 0xe0 <Switch_Get_State+0x40>
 		{
 			SwitchLocalState = SW_PRESSED;
 		}
 		else 
 		{
 			SwitchLocalState = SW_RELEASED;
- 1c6:	80 e0       	ldi	r24, 0x00	; 0
+  de:	80 e0       	ldi	r24, 0x00	; 0
 		}
 	}
 	return SwitchLocalState;
- 1c8:	df 91       	pop	r29
- 1ca:	cf 91       	pop	r28
- 1cc:	1f 91       	pop	r17
+  e0:	df 91       	pop	r29
+  e2:	cf 91       	pop	r28
+  e4:	1f 91       	pop	r17
+  e6:	08 95       	ret
+
+000000e8 <main>:
+#include "ATmega32A_Configuration.h"
+
+
+int main(void)
+{
+	Switch_Init(SW0_DIR_REG, SW_0);
+  e8:	60 e0       	ldi	r22, 0x00	; 0
+  ea:	87 e3       	ldi	r24, 0x37	; 55
+  ec:	90 e0       	ldi	r25, 0x00	; 0
+  ee:	0e 94 4c 00 	call	0x98	; 0x98 <Switch_Init>
+	Switch_Init(SW1_DIR_REG, SW_1);
+  f2:	66 e0       	ldi	r22, 0x06	; 6
+  f4:	81 e3       	ldi	r24, 0x31	; 49
+  f6:	90 e0       	ldi	r25, 0x00	; 0
+  f8:	0e 94 4c 00 	call	0x98	; 0x98 <Switch_Init>
+	Relay_init();
+  fc:	0e 94 3e 00 	call	0x7c	; 0x7c <Relay_init>
+	
+	while (1)
+	{
+		SwitchStateEnum_t sw0_state = Switch_Get_State(SW0_INP_REG, SW_0);
+ 100:	60 e0       	ldi	r22, 0x00	; 0
+ 102:	86 e3       	ldi	r24, 0x36	; 54
+ 104:	90 e0       	ldi	r25, 0x00	; 0
+ 106:	0e 94 50 00 	call	0xa0	; 0xa0 <Switch_Get_State>
+ 10a:	c8 2f       	mov	r28, r24
+		SwitchStateEnum_t sw1_state = Switch_Get_State(SW1_INP_REG, SW_1);
+ 10c:	66 e0       	ldi	r22, 0x06	; 6
+ 10e:	80 e3       	ldi	r24, 0x30	; 48
+ 110:	90 e0       	ldi	r25, 0x00	; 0
+ 112:	0e 94 50 00 	call	0xa0	; 0xa0 <Switch_Get_State>
+		if(sw0_state == SW_PRESSED)
+ 116:	c1 30       	cpi	r28, 0x01	; 1
+ 118:	21 f4       	brne	.+8      	; 0x122 <main+0x3a>
+		{
+			Relay_Set_State(RELAY_ON);
+ 11a:	81 e0       	ldi	r24, 0x01	; 1
+ 11c:	0e 94 45 00 	call	0x8a	; 0x8a <Relay_Set_State>
+ 120:	ef cf       	rjmp	.-34     	; 0x100 <main+0x18>
+		}
+		else if(sw1_state == SW_PRESSED)
+ 122:	81 30       	cpi	r24, 0x01	; 1
+ 124:	69 f7       	brne	.-38     	; 0x100 <main+0x18>
+		{
+			Relay_Set_State(RELAY_OFF);
+ 126:	80 e0       	ldi	r24, 0x00	; 0
+ 128:	0e 94 45 00 	call	0x8a	; 0x8a <Relay_Set_State>
+ 12c:	e9 cf       	rjmp	.-46     	; 0x100 <main+0x18>
+
+0000012e <Dio_ChannelDirectionSet>:
+#include "ATmega32A_Configuration.h"
+
+void Dio_ChannelDirectionSet(volatile uint8* port_reg, DioPinEnum_t channel, DioPinDirectionEnum_t direction)
+{
+
+	switch(direction)
+ 12e:	44 23       	and	r20, r20
+ 130:	19 f0       	breq	.+6      	; 0x138 <Dio_ChannelDirectionSet+0xa>
+ 132:	41 30       	cpi	r20, 0x01	; 1
+ 134:	71 f0       	breq	.+28     	; 0x152 <Dio_ChannelDirectionSet+0x24>
+ 136:	08 95       	ret
+	{
+		case DIO_INPUT:
+			CLEAR_BIT(*port_reg, channel);
+ 138:	fc 01       	movw	r30, r24
+ 13a:	40 81       	ld	r20, Z
+ 13c:	21 e0       	ldi	r18, 0x01	; 1
+ 13e:	30 e0       	ldi	r19, 0x00	; 0
+ 140:	02 c0       	rjmp	.+4      	; 0x146 <Dio_ChannelDirectionSet+0x18>
+ 142:	22 0f       	add	r18, r18
+ 144:	33 1f       	adc	r19, r19
+ 146:	6a 95       	dec	r22
+ 148:	e2 f7       	brpl	.-8      	; 0x142 <Dio_ChannelDirectionSet+0x14>
+ 14a:	20 95       	com	r18
+ 14c:	24 23       	and	r18, r20
+ 14e:	20 83       	st	Z, r18
+			break;
+ 150:	08 95       	ret
+		case DIO_OUTPUT:
+			SET_BIT(*port_reg, channel);
+ 152:	fc 01       	movw	r30, r24
+ 154:	40 81       	ld	r20, Z
+ 156:	21 e0       	ldi	r18, 0x01	; 1
+ 158:	30 e0       	ldi	r19, 0x00	; 0
+ 15a:	02 c0       	rjmp	.+4      	; 0x160 <Dio_ChannelDirectionSet+0x32>
+ 15c:	22 0f       	add	r18, r18
+ 15e:	33 1f       	adc	r19, r19
+ 160:	6a 95       	dec	r22
+ 162:	e2 f7       	brpl	.-8      	; 0x15c <Dio_ChannelDirectionSet+0x2e>
+ 164:	24 2b       	or	r18, r20
+ 166:	20 83       	st	Z, r18
+ 168:	08 95       	ret
+
+0000016a <Dio_ChannelRead>:
+}
+
+
+DioPinStateEnum_t Dio_ChannelRead(volatile uint8* port_reg, DioPinEnum_t channel)
+{
+	DioPinStateEnum_t u8LocalPinValue = READ_BIT(*port_reg, channel);
+ 16a:	fc 01       	movw	r30, r24
+ 16c:	40 81       	ld	r20, Z
+ 16e:	81 e0       	ldi	r24, 0x01	; 1
+ 170:	90 e0       	ldi	r25, 0x00	; 0
+ 172:	9c 01       	movw	r18, r24
+ 174:	06 2e       	mov	r0, r22
+ 176:	02 c0       	rjmp	.+4      	; 0x17c <Dio_ChannelRead+0x12>
+ 178:	22 0f       	add	r18, r18
+ 17a:	33 1f       	adc	r19, r19
+ 17c:	0a 94       	dec	r0
+ 17e:	e2 f7       	brpl	.-8      	; 0x178 <Dio_ChannelRead+0xe>
+ 180:	84 2f       	mov	r24, r20
+ 182:	90 e0       	ldi	r25, 0x00	; 0
+ 184:	82 23       	and	r24, r18
+ 186:	93 23       	and	r25, r19
+ 188:	02 c0       	rjmp	.+4      	; 0x18e <Dio_ChannelRead+0x24>
+ 18a:	96 95       	lsr	r25
+ 18c:	87 95       	ror	r24
+ 18e:	6a 95       	dec	r22
+ 190:	e2 f7       	brpl	.-8      	; 0x18a <Dio_ChannelRead+0x20>
+	return (u8LocalPinValue);
+}
+ 192:	08 95       	ret
+
+00000194 <Dio_ChannelWrite>:
+
+
+void Dio_ChannelWrite(volatile uint8* port_reg, DioPinEnum_t channel, DioPinStateEnum_t state)
+{
+	switch(state)
+ 194:	44 23       	and	r20, r20
+ 196:	19 f0       	breq	.+6      	; 0x19e <Dio_ChannelWrite+0xa>
+ 198:	41 30       	cpi	r20, 0x01	; 1
+ 19a:	71 f0       	breq	.+28     	; 0x1b8 <Dio_ChannelWrite+0x24>
+ 19c:	08 95       	ret
+	{
+		case DIO_LOW:
+			CLEAR_BIT(*port_reg, channel);
+ 19e:	fc 01       	movw	r30, r24
+ 1a0:	40 81       	ld	r20, Z
+ 1a2:	21 e0       	ldi	r18, 0x01	; 1
+ 1a4:	30 e0       	ldi	r19, 0x00	; 0
+ 1a6:	02 c0       	rjmp	.+4      	; 0x1ac <Dio_ChannelWrite+0x18>
+ 1a8:	22 0f       	add	r18, r18
+ 1aa:	33 1f       	adc	r19, r19
+ 1ac:	6a 95       	dec	r22
+ 1ae:	e2 f7       	brpl	.-8      	; 0x1a8 <Dio_ChannelWrite+0x14>
+ 1b0:	20 95       	com	r18
+ 1b2:	24 23       	and	r18, r20
+ 1b4:	20 83       	st	Z, r18
+			break;
+ 1b6:	08 95       	ret
+		case DIO_HIGH:
+			SET_BIT(*port_reg, channel);
+ 1b8:	fc 01       	movw	r30, r24
+ 1ba:	40 81       	ld	r20, Z
+ 1bc:	21 e0       	ldi	r18, 0x01	; 1
+ 1be:	30 e0       	ldi	r19, 0x00	; 0
+ 1c0:	02 c0       	rjmp	.+4      	; 0x1c6 <Dio_ChannelWrite+0x32>
+ 1c2:	22 0f       	add	r18, r18
+ 1c4:	33 1f       	adc	r19, r19
+ 1c6:	6a 95       	dec	r22
+ 1c8:	e2 f7       	brpl	.-8      	; 0x1c2 <Dio_ChannelWrite+0x2e>
+ 1ca:	24 2b       	or	r18, r20
+ 1cc:	20 83       	st	Z, r18
  1ce:	08 95       	ret
 
 000001d0 <_exit>:

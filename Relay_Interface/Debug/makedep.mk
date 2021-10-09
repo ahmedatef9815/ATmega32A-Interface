@@ -2,13 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-DIO.c
+HAL\LED\LED.c
 
-LED.c
+HAL\Relay\Relay.c
+
+HAL\SW\SW.c
 
 main.c
 
-Relay.c
-
-SW.c
+MCAL\DIO\DIO.c
 

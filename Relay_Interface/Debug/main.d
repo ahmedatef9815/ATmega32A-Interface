@@ -5,8 +5,9 @@ main.d main.o: .././main.c \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././LED.h .././DIO.h .././Std_Types.h .././SW.h \
- .././ATmega32A_Configuration.h .././Relay.h
+ ../HAL/LED/LED.h ../MCAL/DIO/DIO.h ../Utilities/Std_Types.h \
+ ../HAL/SW/SW.h ../Utilities/ATmega32A_Configuration.h \
+ ../HAL/Relay/Relay.h
 
 d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
@@ -20,14 +21,14 @@ d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\dela
 
 d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-.././LED.h:
+../HAL/LED/LED.h:
 
-.././DIO.h:
+../MCAL/DIO/DIO.h:
 
-.././Std_Types.h:
+../Utilities/Std_Types.h:
 
-.././SW.h:
+../HAL/SW/SW.h:
 
-.././ATmega32A_Configuration.h:
+../Utilities/ATmega32A_Configuration.h:
 
-.././Relay.h:
+../HAL/Relay/Relay.h:
