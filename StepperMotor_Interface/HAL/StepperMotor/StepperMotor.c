@@ -19,13 +19,13 @@ void StepperMotorInit(void)
 	Dio_ChannelDirectionSet(STEPPER_MOTOR_DIR_REG, STEPPER_MOTOR_IN4_PIN, DIO_OUTPUT);
 }
 
-void StepperMotorTurnClockwise(void)
+void StepperMotorTurnCounterClockwise(void)
 {
 	uint8 u8LocalLoopIndex;
 	for (u8LocalLoopIndex = 0U; u8LocalLoopIndex < STEPPER_MOTOR_COILS_NUM; u8LocalLoopIndex++)
 	{
 		#if STEPPER_UPPER_PORT
-		*STEPPER_MOTOR_OUT_REG &= 0x0FU;     //lazem asfar el 4 bits el 3ayz akteb feehom kol mara
+		*STEPPER_MOTOR_OUT_REG &= 0x0FU;     
 		#else
 		*STEPPER_MOTOR_OUT_REG &= 0xF0U;
 		#endif
@@ -36,13 +36,13 @@ void StepperMotorTurnClockwise(void)
 		
 }
 
-void StepperMotorTurnCounterClockwise(void)
+void StepperMotorTurnClockwise(void)
 {
 	sint8 s8LocalLoopIndex;
 	for (s8LocalLoopIndex = (STEPPER_MOTOR_COILS_NUM - 1); s8LocalLoopIndex >= 0; s8LocalLoopIndex--)
 	{
 		#if STEPPER_UPPER_PORT
-		*STEPPER_MOTOR_OUT_REG &= 0x0FU;         //lazem asfar el 4 bits el 3ayz akteb feehom kol mara
+		*STEPPER_MOTOR_OUT_REG &= 0x0FU;         
 		#else 
 		*STEPPER_MOTOR_OUT_REG &= 0xF0U;
 		#endif

@@ -32,15 +32,21 @@ LIB_DEP:=
 LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
-SUBDIRS := 
+SUBDIRS :=  \
+../HAL/SW \
+../HAL/StepperMotor \
+../MCAL \
+../HAL \
+../MCAL/DIO \
+../Utilities
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../DIO.c \
+../HAL/StepperMotor/StepperMotor.c \
+../HAL/SW/SW.c \
 ../main.c \
-../StepperMotor.c \
-../SW.c
+../MCAL/DIO/DIO.c
 
 
 PREPROCESSING_SRCS += 
@@ -50,28 +56,28 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-DIO.o \
+HAL/StepperMotor/StepperMotor.o \
+HAL/SW/SW.o \
 main.o \
-StepperMotor.o \
-SW.o
+MCAL/DIO/DIO.o
 
 OBJS_AS_ARGS +=  \
-DIO.o \
+HAL/StepperMotor/StepperMotor.o \
+HAL/SW/SW.o \
 main.o \
-StepperMotor.o \
-SW.o
+MCAL/DIO/DIO.o
 
 C_DEPS +=  \
-DIO.d \
+HAL/StepperMotor/StepperMotor.d \
+HAL/SW/SW.d \
 main.d \
-StepperMotor.d \
-SW.d
+MCAL/DIO/DIO.d
 
 C_DEPS_AS_ARGS +=  \
-DIO.d \
+HAL/StepperMotor/StepperMotor.d \
+HAL/SW/SW.d \
 main.d \
-StepperMotor.d \
-SW.d
+MCAL/DIO/DIO.d
 
 OUTPUT_FILE_PATH +=StepperMotor_Interface.elf
 
@@ -87,31 +93,31 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-./DIO.o: .././DIO.c
+HAL/StepperMotor/StepperMotor.o: ../HAL/StepperMotor/StepperMotor.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Microship Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Microship Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../HAL/StepperMotor" -I"../HAL/SW" -I"../MCAL/DIO" -I"../Utilities"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/SW/SW.o: ../HAL/SW/SW.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Microship Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../HAL/StepperMotor" -I"../HAL/SW" -I"../MCAL/DIO" -I"../Utilities"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Microship Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Microship Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../HAL/StepperMotor" -I"../HAL/SW" -I"../MCAL/DIO" -I"../Utilities"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-./StepperMotor.o: .././StepperMotor.c
+MCAL/DIO/DIO.o: ../MCAL/DIO/DIO.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Microship Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-./SW.o: .././SW.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Microship Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)D:\Microship Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../HAL/StepperMotor" -I"../HAL/SW" -I"../MCAL/DIO" -I"../Utilities"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "D:\Microship Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

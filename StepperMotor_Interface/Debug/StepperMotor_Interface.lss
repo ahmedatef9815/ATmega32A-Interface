@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 000000c0  00000000  00000000  00000324  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000f34  00000000  00000000  000003e4  2**0
+  6 .debug_info   00000ef9  00000000  00000000  000003e4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008d3  00000000  00000000  00001318  2**0
+  7 .debug_abbrev 000008c4  00000000  00000000  000012dd  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000005a6  00000000  00000000  00001beb  2**0
+  8 .debug_line   00000621  00000000  00000000  00001ba1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000120  00000000  00000000  00002194  2**2
+  9 .debug_frame  00000120  00000000  00000000  000021c4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000615  00000000  00000000  000022b4  2**0
+ 10 .debug_str    00000622  00000000  00000000  000022e4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000031a  00000000  00000000  000028c9  2**0
+ 11 .debug_loc    000002de  00000000  00000000  00002906  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000080  00000000  00000000  00002be3  2**0
+ 12 .debug_ranges 00000080  00000000  00000000  00002be4  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -89,337 +89,357 @@ Disassembly of section .text:
   80:	a5 36       	cpi	r26, 0x65	; 101
   82:	b2 07       	cpc	r27, r18
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
-  86:	0e 94 7c 00 	call	0xf8	; 0xf8 <main>
+  86:	0e 94 ba 00 	call	0x174	; 0x174 <main>
   8a:	0c 94 0e 01 	jmp	0x21c	; 0x21c <_exit>
 
 0000008e <__bad_interrupt>:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-00000092 <Dio_ChannelDirectionSet>:
-#include "ATmega32A_Configuration.h"
+00000092 <StepperMotorInit>:
+#endif
 
-void Dio_ChannelDirectionSet(volatile uint8* port_reg, DioPinEnum_t channel, DioPinDirectionEnum_t direction)
-{
-
-	switch(direction)
-  92:	44 23       	and	r20, r20
-  94:	19 f0       	breq	.+6      	; 0x9c <Dio_ChannelDirectionSet+0xa>
-  96:	41 30       	cpi	r20, 0x01	; 1
-  98:	71 f0       	breq	.+28     	; 0xb6 <Dio_ChannelDirectionSet+0x24>
-  9a:	08 95       	ret
-	{
-		case DIO_INPUT:
-			CLEAR_BIT(*port_reg, channel);
-  9c:	fc 01       	movw	r30, r24
-  9e:	40 81       	ld	r20, Z
-  a0:	21 e0       	ldi	r18, 0x01	; 1
-  a2:	30 e0       	ldi	r19, 0x00	; 0
-  a4:	02 c0       	rjmp	.+4      	; 0xaa <Dio_ChannelDirectionSet+0x18>
-  a6:	22 0f       	add	r18, r18
-  a8:	33 1f       	adc	r19, r19
-  aa:	6a 95       	dec	r22
-  ac:	e2 f7       	brpl	.-8      	; 0xa6 <Dio_ChannelDirectionSet+0x14>
-  ae:	20 95       	com	r18
-  b0:	24 23       	and	r18, r20
-  b2:	20 83       	st	Z, r18
-			break;
-  b4:	08 95       	ret
-		case DIO_OUTPUT:
-			SET_BIT(*port_reg, channel);
-  b6:	fc 01       	movw	r30, r24
-  b8:	40 81       	ld	r20, Z
-  ba:	21 e0       	ldi	r18, 0x01	; 1
-  bc:	30 e0       	ldi	r19, 0x00	; 0
-  be:	02 c0       	rjmp	.+4      	; 0xc4 <Dio_ChannelDirectionSet+0x32>
-  c0:	22 0f       	add	r18, r18
-  c2:	33 1f       	adc	r19, r19
-  c4:	6a 95       	dec	r22
-  c6:	e2 f7       	brpl	.-8      	; 0xc0 <Dio_ChannelDirectionSet+0x2e>
-  c8:	24 2b       	or	r18, r20
-  ca:	20 83       	st	Z, r18
-  cc:	08 95       	ret
-
-000000ce <Dio_ChannelRead>:
-}
-
-
-DioPinStateEnum_t Dio_ChannelRead(volatile uint8* port_reg, DioPinEnum_t channel)
-{
-	DioPinStateEnum_t u8LocalPinValue = READ_BIT(*port_reg, channel);
-  ce:	fc 01       	movw	r30, r24
-  d0:	40 81       	ld	r20, Z
-  d2:	81 e0       	ldi	r24, 0x01	; 1
-  d4:	90 e0       	ldi	r25, 0x00	; 0
-  d6:	9c 01       	movw	r18, r24
-  d8:	06 2e       	mov	r0, r22
-  da:	02 c0       	rjmp	.+4      	; 0xe0 <Dio_ChannelRead+0x12>
-  dc:	22 0f       	add	r18, r18
-  de:	33 1f       	adc	r19, r19
-  e0:	0a 94       	dec	r0
-  e2:	e2 f7       	brpl	.-8      	; 0xdc <Dio_ChannelRead+0xe>
-  e4:	84 2f       	mov	r24, r20
-  e6:	90 e0       	ldi	r25, 0x00	; 0
-  e8:	82 23       	and	r24, r18
-  ea:	93 23       	and	r25, r19
-  ec:	02 c0       	rjmp	.+4      	; 0xf2 <Dio_ChannelRead+0x24>
-  ee:	96 95       	lsr	r25
-  f0:	87 95       	ror	r24
-  f2:	6a 95       	dec	r22
-  f4:	e2 f7       	brpl	.-8      	; 0xee <Dio_ChannelRead+0x20>
-	return (u8LocalPinValue);
-}
-  f6:	08 95       	ret
-
-000000f8 <main>:
-#include "SW.h"
-
-
-int main(void)
-{
-	Switch_Init(SW0_DIR_REG, SW_0);
-  f8:	60 e0       	ldi	r22, 0x00	; 0
-  fa:	87 e3       	ldi	r24, 0x37	; 55
-  fc:	90 e0       	ldi	r25, 0x00	; 0
-  fe:	0e 94 e6 00 	call	0x1cc	; 0x1cc <Switch_Init>
-	Switch_Init(SW1_DIR_REG, SW_1);
- 102:	66 e0       	ldi	r22, 0x06	; 6
- 104:	81 e3       	ldi	r24, 0x31	; 49
- 106:	90 e0       	ldi	r25, 0x00	; 0
- 108:	0e 94 e6 00 	call	0x1cc	; 0x1cc <Switch_Init>
-	StepperMotorInit();
- 10c:	0e 94 9d 00 	call	0x13a	; 0x13a <StepperMotorInit>
-		
-    while (1) 
-    {
-		SwitchStateEnum_t sw0_state = Switch_Get_State(SW0_INP_REG, SW_0);
- 110:	60 e0       	ldi	r22, 0x00	; 0
- 112:	86 e3       	ldi	r24, 0x36	; 54
- 114:	90 e0       	ldi	r25, 0x00	; 0
- 116:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <Switch_Get_State>
- 11a:	c8 2f       	mov	r28, r24
-		SwitchStateEnum_t sw1_state = Switch_Get_State(SW1_INP_REG, SW_1);
- 11c:	66 e0       	ldi	r22, 0x06	; 6
- 11e:	80 e3       	ldi	r24, 0x30	; 48
- 120:	90 e0       	ldi	r25, 0x00	; 0
- 122:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <Switch_Get_State>
-		if(sw0_state == SW_PRESSED)
- 126:	c1 30       	cpi	r28, 0x01	; 1
- 128:	19 f4       	brne	.+6      	; 0x130 <main+0x38>
-		{
-			StepperMotorTurnClockwise();
- 12a:	0e 94 b6 00 	call	0x16c	; 0x16c <StepperMotorTurnClockwise>
- 12e:	f0 cf       	rjmp	.-32     	; 0x110 <main+0x18>
-		}
-		else if(sw1_state == SW_PRESSED)
- 130:	81 30       	cpi	r24, 0x01	; 1
- 132:	71 f7       	brne	.-36     	; 0x110 <main+0x18>
-		{
-			StepperMotorTurnCounterClockwise();
- 134:	0e 94 cd 00 	call	0x19a	; 0x19a <StepperMotorTurnCounterClockwise>
- 138:	eb cf       	rjmp	.-42     	; 0x110 <main+0x18>
-
-0000013a <StepperMotorInit>:
-//g for global , a for array , u8 for uint8
-uint8 gau8StepperRotation[4U] = {0x10U, 0x20U, 0x40U, 0x80U};
 
 void StepperMotorInit(void)
 {
 	Dio_ChannelDirectionSet(STEPPER_MOTOR_DIR_REG, STEPPER_MOTOR_IN1_PIN, DIO_OUTPUT);
- 13a:	41 e0       	ldi	r20, 0x01	; 1
- 13c:	64 e0       	ldi	r22, 0x04	; 4
- 13e:	8a e3       	ldi	r24, 0x3A	; 58
- 140:	90 e0       	ldi	r25, 0x00	; 0
- 142:	0e 94 49 00 	call	0x92	; 0x92 <Dio_ChannelDirectionSet>
+  92:	41 e0       	ldi	r20, 0x01	; 1
+  94:	64 e0       	ldi	r22, 0x04	; 4
+  96:	8a e3       	ldi	r24, 0x3A	; 58
+  98:	90 e0       	ldi	r25, 0x00	; 0
+  9a:	0e 94 db 00 	call	0x1b6	; 0x1b6 <Dio_ChannelDirectionSet>
 	Dio_ChannelDirectionSet(STEPPER_MOTOR_DIR_REG, STEPPER_MOTOR_IN2_PIN, DIO_OUTPUT);
- 146:	41 e0       	ldi	r20, 0x01	; 1
- 148:	65 e0       	ldi	r22, 0x05	; 5
- 14a:	8a e3       	ldi	r24, 0x3A	; 58
- 14c:	90 e0       	ldi	r25, 0x00	; 0
- 14e:	0e 94 49 00 	call	0x92	; 0x92 <Dio_ChannelDirectionSet>
+  9e:	41 e0       	ldi	r20, 0x01	; 1
+  a0:	65 e0       	ldi	r22, 0x05	; 5
+  a2:	8a e3       	ldi	r24, 0x3A	; 58
+  a4:	90 e0       	ldi	r25, 0x00	; 0
+  a6:	0e 94 db 00 	call	0x1b6	; 0x1b6 <Dio_ChannelDirectionSet>
 	Dio_ChannelDirectionSet(STEPPER_MOTOR_DIR_REG, STEPPER_MOTOR_IN3_PIN, DIO_OUTPUT);
- 152:	41 e0       	ldi	r20, 0x01	; 1
- 154:	66 e0       	ldi	r22, 0x06	; 6
- 156:	8a e3       	ldi	r24, 0x3A	; 58
- 158:	90 e0       	ldi	r25, 0x00	; 0
- 15a:	0e 94 49 00 	call	0x92	; 0x92 <Dio_ChannelDirectionSet>
+  aa:	41 e0       	ldi	r20, 0x01	; 1
+  ac:	66 e0       	ldi	r22, 0x06	; 6
+  ae:	8a e3       	ldi	r24, 0x3A	; 58
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	0e 94 db 00 	call	0x1b6	; 0x1b6 <Dio_ChannelDirectionSet>
 	Dio_ChannelDirectionSet(STEPPER_MOTOR_DIR_REG, STEPPER_MOTOR_IN4_PIN, DIO_OUTPUT);
- 15e:	41 e0       	ldi	r20, 0x01	; 1
- 160:	67 e0       	ldi	r22, 0x07	; 7
- 162:	8a e3       	ldi	r24, 0x3A	; 58
- 164:	90 e0       	ldi	r25, 0x00	; 0
- 166:	0e 94 49 00 	call	0x92	; 0x92 <Dio_ChannelDirectionSet>
- 16a:	08 95       	ret
+  b6:	41 e0       	ldi	r20, 0x01	; 1
+  b8:	67 e0       	ldi	r22, 0x07	; 7
+  ba:	8a e3       	ldi	r24, 0x3A	; 58
+  bc:	90 e0       	ldi	r25, 0x00	; 0
+  be:	0e 94 db 00 	call	0x1b6	; 0x1b6 <Dio_ChannelDirectionSet>
+  c2:	08 95       	ret
 
-0000016c <StepperMotorTurnClockwise>:
+000000c4 <StepperMotorTurnCounterClockwise>:
 }
 
-void StepperMotorTurnClockwise(void)
+void StepperMotorTurnCounterClockwise(void)
 {
 	uint8 u8LocalLoopIndex;
-	for (u8LocalLoopIndex = 0U; u8LocalLoopIndex < 4U; u8LocalLoopIndex++)
- 16c:	80 e0       	ldi	r24, 0x00	; 0
- 16e:	12 c0       	rjmp	.+36     	; 0x194 <StepperMotorTurnClockwise+0x28>
+	for (u8LocalLoopIndex = 0U; u8LocalLoopIndex < STEPPER_MOTOR_COILS_NUM; u8LocalLoopIndex++)
+  c4:	80 e0       	ldi	r24, 0x00	; 0
+  c6:	12 c0       	rjmp	.+36     	; 0xec <StepperMotorTurnCounterClockwise+0x28>
 	{
-		
-		*STEPPER_MOTOR_OUT_REG &= 0x0FU;              //lazem asfar el 4 bits el 3ayz akteb feehom kol mara
- 170:	9b b3       	in	r25, 0x1b	; 27
- 172:	9f 70       	andi	r25, 0x0F	; 15
- 174:	9b bb       	out	0x1b, r25	; 27
+		#if STEPPER_UPPER_PORT
+		*STEPPER_MOTOR_OUT_REG &= 0x0FU;     
+  c8:	9b b3       	in	r25, 0x1b	; 27
+  ca:	9f 70       	andi	r25, 0x0F	; 15
+  cc:	9b bb       	out	0x1b, r25	; 27
+		#else
+		*STEPPER_MOTOR_OUT_REG &= 0xF0U;
+		#endif
+		             
 		*STEPPER_MOTOR_OUT_REG |= gau8StepperRotation[u8LocalLoopIndex];
- 176:	2b b3       	in	r18, 0x1b	; 27
- 178:	e8 2f       	mov	r30, r24
- 17a:	f0 e0       	ldi	r31, 0x00	; 0
- 17c:	e0 5a       	subi	r30, 0xA0	; 160
- 17e:	ff 4f       	sbci	r31, 0xFF	; 255
- 180:	90 81       	ld	r25, Z
- 182:	92 2b       	or	r25, r18
- 184:	9b bb       	out	0x1b, r25	; 27
+  ce:	2b b3       	in	r18, 0x1b	; 27
+  d0:	e8 2f       	mov	r30, r24
+  d2:	f0 e0       	ldi	r31, 0x00	; 0
+  d4:	e0 5a       	subi	r30, 0xA0	; 160
+  d6:	ff 4f       	sbci	r31, 0xFF	; 255
+  d8:	90 81       	ld	r25, Z
+  da:	92 2b       	or	r25, r18
+  dc:	9b bb       	out	0x1b, r25	; 27
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 186:	ef e1       	ldi	r30, 0x1F	; 31
- 188:	fe e4       	ldi	r31, 0x4E	; 78
- 18a:	31 97       	sbiw	r30, 0x01	; 1
- 18c:	f1 f7       	brne	.-4      	; 0x18a <StepperMotorTurnClockwise+0x1e>
- 18e:	00 c0       	rjmp	.+0      	; 0x190 <StepperMotorTurnClockwise+0x24>
- 190:	00 00       	nop
+  de:	ef e1       	ldi	r30, 0x1F	; 31
+  e0:	fe e4       	ldi	r31, 0x4E	; 78
+  e2:	31 97       	sbiw	r30, 0x01	; 1
+  e4:	f1 f7       	brne	.-4      	; 0xe2 <StepperMotorTurnCounterClockwise+0x1e>
+  e6:	00 c0       	rjmp	.+0      	; 0xe8 <StepperMotorTurnCounterClockwise+0x24>
+  e8:	00 00       	nop
 }
 
-void StepperMotorTurnClockwise(void)
+void StepperMotorTurnCounterClockwise(void)
 {
 	uint8 u8LocalLoopIndex;
-	for (u8LocalLoopIndex = 0U; u8LocalLoopIndex < 4U; u8LocalLoopIndex++)
- 192:	8f 5f       	subi	r24, 0xFF	; 255
- 194:	84 30       	cpi	r24, 0x04	; 4
- 196:	60 f3       	brcs	.-40     	; 0x170 <StepperMotorTurnClockwise+0x4>
-		*STEPPER_MOTOR_OUT_REG &= 0x0FU;              //lazem asfar el 4 bits el 3ayz akteb feehom kol mara
+	for (u8LocalLoopIndex = 0U; u8LocalLoopIndex < STEPPER_MOTOR_COILS_NUM; u8LocalLoopIndex++)
+  ea:	8f 5f       	subi	r24, 0xFF	; 255
+  ec:	84 30       	cpi	r24, 0x04	; 4
+  ee:	60 f3       	brcs	.-40     	; 0xc8 <StepperMotorTurnCounterClockwise+0x4>
+		             
 		*STEPPER_MOTOR_OUT_REG |= gau8StepperRotation[u8LocalLoopIndex];
 		_delay_ms(STEPPER_MOTOR_STEP_DELAY_MS);
 	}
 		
 }
- 198:	08 95       	ret
+  f0:	08 95       	ret
 
-0000019a <StepperMotorTurnCounterClockwise>:
+000000f2 <StepperMotorTurnClockwise>:
 
-void StepperMotorTurnCounterClockwise(void)
+void StepperMotorTurnClockwise(void)
 {
 	sint8 s8LocalLoopIndex;
-	for (s8LocalLoopIndex = 3; s8LocalLoopIndex >= 0; s8LocalLoopIndex--)
- 19a:	83 e0       	ldi	r24, 0x03	; 3
- 19c:	14 c0       	rjmp	.+40     	; 0x1c6 <StepperMotorTurnCounterClockwise+0x2c>
+	for (s8LocalLoopIndex = (STEPPER_MOTOR_COILS_NUM - 1); s8LocalLoopIndex >= 0; s8LocalLoopIndex--)
+  f2:	83 e0       	ldi	r24, 0x03	; 3
+  f4:	14 c0       	rjmp	.+40     	; 0x11e <StepperMotorTurnClockwise+0x2c>
 	{
-		
-		*STEPPER_MOTOR_OUT_REG &= 0x0FU;              //lazem asfar el 4 bits el 3ayz akteb feehom kol mara
- 19e:	9b b3       	in	r25, 0x1b	; 27
- 1a0:	9f 70       	andi	r25, 0x0F	; 15
- 1a2:	9b bb       	out	0x1b, r25	; 27
+		#if STEPPER_UPPER_PORT
+		*STEPPER_MOTOR_OUT_REG &= 0x0FU;         
+  f6:	9b b3       	in	r25, 0x1b	; 27
+  f8:	9f 70       	andi	r25, 0x0F	; 15
+  fa:	9b bb       	out	0x1b, r25	; 27
+		#else 
+		*STEPPER_MOTOR_OUT_REG &= 0xF0U;
+		#endif
+		              
 		*STEPPER_MOTOR_OUT_REG |= gau8StepperRotation[s8LocalLoopIndex];
- 1a4:	2b b3       	in	r18, 0x1b	; 27
- 1a6:	e8 2f       	mov	r30, r24
- 1a8:	08 2e       	mov	r0, r24
- 1aa:	00 0c       	add	r0, r0
- 1ac:	ff 0b       	sbc	r31, r31
- 1ae:	e0 5a       	subi	r30, 0xA0	; 160
- 1b0:	ff 4f       	sbci	r31, 0xFF	; 255
- 1b2:	90 81       	ld	r25, Z
- 1b4:	92 2b       	or	r25, r18
- 1b6:	9b bb       	out	0x1b, r25	; 27
- 1b8:	ef e1       	ldi	r30, 0x1F	; 31
- 1ba:	fe e4       	ldi	r31, 0x4E	; 78
- 1bc:	31 97       	sbiw	r30, 0x01	; 1
- 1be:	f1 f7       	brne	.-4      	; 0x1bc <StepperMotorTurnCounterClockwise+0x22>
- 1c0:	00 c0       	rjmp	.+0      	; 0x1c2 <StepperMotorTurnCounterClockwise+0x28>
- 1c2:	00 00       	nop
+  fc:	2b b3       	in	r18, 0x1b	; 27
+  fe:	e8 2f       	mov	r30, r24
+ 100:	08 2e       	mov	r0, r24
+ 102:	00 0c       	add	r0, r0
+ 104:	ff 0b       	sbc	r31, r31
+ 106:	e0 5a       	subi	r30, 0xA0	; 160
+ 108:	ff 4f       	sbci	r31, 0xFF	; 255
+ 10a:	90 81       	ld	r25, Z
+ 10c:	92 2b       	or	r25, r18
+ 10e:	9b bb       	out	0x1b, r25	; 27
+ 110:	ef e1       	ldi	r30, 0x1F	; 31
+ 112:	fe e4       	ldi	r31, 0x4E	; 78
+ 114:	31 97       	sbiw	r30, 0x01	; 1
+ 116:	f1 f7       	brne	.-4      	; 0x114 <StepperMotorTurnClockwise+0x22>
+ 118:	00 c0       	rjmp	.+0      	; 0x11a <StepperMotorTurnClockwise+0x28>
+ 11a:	00 00       	nop
 }
 
-void StepperMotorTurnCounterClockwise(void)
+void StepperMotorTurnClockwise(void)
 {
 	sint8 s8LocalLoopIndex;
-	for (s8LocalLoopIndex = 3; s8LocalLoopIndex >= 0; s8LocalLoopIndex--)
- 1c4:	81 50       	subi	r24, 0x01	; 1
- 1c6:	88 23       	and	r24, r24
- 1c8:	54 f7       	brge	.-44     	; 0x19e <StepperMotorTurnCounterClockwise+0x4>
-		
-		*STEPPER_MOTOR_OUT_REG &= 0x0FU;              //lazem asfar el 4 bits el 3ayz akteb feehom kol mara
+	for (s8LocalLoopIndex = (STEPPER_MOTOR_COILS_NUM - 1); s8LocalLoopIndex >= 0; s8LocalLoopIndex--)
+ 11c:	81 50       	subi	r24, 0x01	; 1
+ 11e:	88 23       	and	r24, r24
+ 120:	54 f7       	brge	.-44     	; 0xf6 <StepperMotorTurnClockwise+0x4>
+		#endif
+		              
 		*STEPPER_MOTOR_OUT_REG |= gau8StepperRotation[s8LocalLoopIndex];
 		_delay_ms(STEPPER_MOTOR_STEP_DELAY_MS);
 	}
 }
- 1ca:	08 95       	ret
+ 122:	08 95       	ret
 
-000001cc <Switch_Init>:
+00000124 <Switch_Init>:
 
 DioPinStateEnum_t SwitchPreviousState = SW_RELEASED;
 
 void Switch_Init(volatile uint8* sw_reg, SwitchEnum_t sw_no)
 {
 	Dio_ChannelDirectionSet(sw_reg, sw_no, DIO_INPUT);
- 1cc:	40 e0       	ldi	r20, 0x00	; 0
- 1ce:	0e 94 49 00 	call	0x92	; 0x92 <Dio_ChannelDirectionSet>
- 1d2:	08 95       	ret
+ 124:	40 e0       	ldi	r20, 0x00	; 0
+ 126:	0e 94 db 00 	call	0x1b6	; 0x1b6 <Dio_ChannelDirectionSet>
+ 12a:	08 95       	ret
 
-000001d4 <Switch_Get_State>:
+0000012c <Switch_Get_State>:
 }
 
 
 SwitchStateEnum_t Switch_Get_State(volatile uint8* sw_reg, SwitchEnum_t sw_no)
 {
- 1d4:	1f 93       	push	r17
- 1d6:	cf 93       	push	r28
- 1d8:	df 93       	push	r29
- 1da:	ec 01       	movw	r28, r24
- 1dc:	16 2f       	mov	r17, r22
+ 12c:	1f 93       	push	r17
+ 12e:	cf 93       	push	r28
+ 130:	df 93       	push	r29
+ 132:	ec 01       	movw	r28, r24
+ 134:	16 2f       	mov	r17, r22
 	SwitchStateEnum_t SwitchLocalState = SW_RELEASED;
 	if(SwitchPreviousState != Dio_ChannelRead(sw_reg, sw_no))
- 1de:	0e 94 67 00 	call	0xce	; 0xce <Dio_ChannelRead>
- 1e2:	90 91 64 00 	lds	r25, 0x0064	; 0x800064 <__data_end>
- 1e6:	89 17       	cp	r24, r25
- 1e8:	91 f0       	breq	.+36     	; 0x20e <Switch_Get_State+0x3a>
- 1ea:	2f ef       	ldi	r18, 0xFF	; 255
- 1ec:	89 ef       	ldi	r24, 0xF9	; 249
- 1ee:	90 e0       	ldi	r25, 0x00	; 0
- 1f0:	21 50       	subi	r18, 0x01	; 1
- 1f2:	80 40       	sbci	r24, 0x00	; 0
- 1f4:	90 40       	sbci	r25, 0x00	; 0
- 1f6:	e1 f7       	brne	.-8      	; 0x1f0 <Switch_Get_State+0x1c>
- 1f8:	00 c0       	rjmp	.+0      	; 0x1fa <Switch_Get_State+0x26>
- 1fa:	00 00       	nop
+ 136:	0e 94 f9 00 	call	0x1f2	; 0x1f2 <Dio_ChannelRead>
+ 13a:	90 91 64 00 	lds	r25, 0x0064	; 0x800064 <__data_end>
+ 13e:	89 17       	cp	r24, r25
+ 140:	91 f0       	breq	.+36     	; 0x166 <Switch_Get_State+0x3a>
+ 142:	2f ef       	ldi	r18, 0xFF	; 255
+ 144:	89 ef       	ldi	r24, 0xF9	; 249
+ 146:	90 e0       	ldi	r25, 0x00	; 0
+ 148:	21 50       	subi	r18, 0x01	; 1
+ 14a:	80 40       	sbci	r24, 0x00	; 0
+ 14c:	90 40       	sbci	r25, 0x00	; 0
+ 14e:	e1 f7       	brne	.-8      	; 0x148 <Switch_Get_State+0x1c>
+ 150:	00 c0       	rjmp	.+0      	; 0x152 <Switch_Get_State+0x26>
+ 152:	00 00       	nop
 	{
 		_delay_ms(DEBOUNCE_PERIOD);
 		SwitchPreviousState = Dio_ChannelRead(sw_reg, sw_no);
- 1fc:	61 2f       	mov	r22, r17
- 1fe:	ce 01       	movw	r24, r28
- 200:	0e 94 67 00 	call	0xce	; 0xce <Dio_ChannelRead>
- 204:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__data_end>
+ 154:	61 2f       	mov	r22, r17
+ 156:	ce 01       	movw	r24, r28
+ 158:	0e 94 f9 00 	call	0x1f2	; 0x1f2 <Dio_ChannelRead>
+ 15c:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__data_end>
 		if(SwitchPreviousState == DIO_HIGH)
- 208:	81 30       	cpi	r24, 0x01	; 1
- 20a:	19 f4       	brne	.+6      	; 0x212 <Switch_Get_State+0x3e>
- 20c:	03 c0       	rjmp	.+6      	; 0x214 <Switch_Get_State+0x40>
+ 160:	81 30       	cpi	r24, 0x01	; 1
+ 162:	19 f4       	brne	.+6      	; 0x16a <Switch_Get_State+0x3e>
+ 164:	03 c0       	rjmp	.+6      	; 0x16c <Switch_Get_State+0x40>
 }
 
 
 SwitchStateEnum_t Switch_Get_State(volatile uint8* sw_reg, SwitchEnum_t sw_no)
 {
 	SwitchStateEnum_t SwitchLocalState = SW_RELEASED;
- 20e:	80 e0       	ldi	r24, 0x00	; 0
- 210:	01 c0       	rjmp	.+2      	; 0x214 <Switch_Get_State+0x40>
+ 166:	80 e0       	ldi	r24, 0x00	; 0
+ 168:	01 c0       	rjmp	.+2      	; 0x16c <Switch_Get_State+0x40>
 		{
 			SwitchLocalState = SW_PRESSED;
 		}
 		else 
 		{
 			SwitchLocalState = SW_RELEASED;
- 212:	80 e0       	ldi	r24, 0x00	; 0
+ 16a:	80 e0       	ldi	r24, 0x00	; 0
 		}
 	}
 	return SwitchLocalState;
- 214:	df 91       	pop	r29
- 216:	cf 91       	pop	r28
- 218:	1f 91       	pop	r17
+ 16c:	df 91       	pop	r29
+ 16e:	cf 91       	pop	r28
+ 170:	1f 91       	pop	r17
+ 172:	08 95       	ret
+
+00000174 <main>:
+#include "SW.h"
+
+
+int main(void)
+{
+	StepperMotorInit();
+ 174:	0e 94 49 00 	call	0x92	; 0x92 <StepperMotorInit>
+	Switch_Init(SW0_DIR_REG, SW_1);
+ 178:	66 e0       	ldi	r22, 0x06	; 6
+ 17a:	87 e3       	ldi	r24, 0x37	; 55
+ 17c:	90 e0       	ldi	r25, 0x00	; 0
+ 17e:	0e 94 92 00 	call	0x124	; 0x124 <Switch_Init>
+	Switch_Init(SW1_DIR_REG, SW_2);
+ 182:	62 e0       	ldi	r22, 0x02	; 2
+ 184:	81 e3       	ldi	r24, 0x31	; 49
+ 186:	90 e0       	ldi	r25, 0x00	; 0
+ 188:	0e 94 92 00 	call	0x124	; 0x124 <Switch_Init>
+ 18c:	02 c0       	rjmp	.+4      	; 0x192 <main+0x1e>
+		
+    while (1) 
+    {
+		while(Switch_Get_State(SW1_INP_REG, SW_1) == SW_PRESSED)
+		{
+			StepperMotorTurnClockwise();
+ 18e:	0e 94 79 00 	call	0xf2	; 0xf2 <StepperMotorTurnClockwise>
+	Switch_Init(SW0_DIR_REG, SW_1);
+	Switch_Init(SW1_DIR_REG, SW_2);
+		
+    while (1) 
+    {
+		while(Switch_Get_State(SW1_INP_REG, SW_1) == SW_PRESSED)
+ 192:	66 e0       	ldi	r22, 0x06	; 6
+ 194:	80 e3       	ldi	r24, 0x30	; 48
+ 196:	90 e0       	ldi	r25, 0x00	; 0
+ 198:	0e 94 96 00 	call	0x12c	; 0x12c <Switch_Get_State>
+ 19c:	81 30       	cpi	r24, 0x01	; 1
+ 19e:	19 f4       	brne	.+6      	; 0x1a6 <main+0x32>
+ 1a0:	f6 cf       	rjmp	.-20     	; 0x18e <main+0x1a>
+		{
+			StepperMotorTurnClockwise();
+		}
+		while(Switch_Get_State(SW2_INP_REG, SW_2) == SW_PRESSED)
+		{
+			StepperMotorTurnCounterClockwise();
+ 1a2:	0e 94 62 00 	call	0xc4	; 0xc4 <StepperMotorTurnCounterClockwise>
+    {
+		while(Switch_Get_State(SW1_INP_REG, SW_1) == SW_PRESSED)
+		{
+			StepperMotorTurnClockwise();
+		}
+		while(Switch_Get_State(SW2_INP_REG, SW_2) == SW_PRESSED)
+ 1a6:	62 e0       	ldi	r22, 0x02	; 2
+ 1a8:	80 e3       	ldi	r24, 0x30	; 48
+ 1aa:	90 e0       	ldi	r25, 0x00	; 0
+ 1ac:	0e 94 96 00 	call	0x12c	; 0x12c <Switch_Get_State>
+ 1b0:	81 30       	cpi	r24, 0x01	; 1
+ 1b2:	b9 f3       	breq	.-18     	; 0x1a2 <main+0x2e>
+ 1b4:	ee cf       	rjmp	.-36     	; 0x192 <main+0x1e>
+
+000001b6 <Dio_ChannelDirectionSet>:
+#include "ATmega32A_Configuration.h"
+
+void Dio_ChannelDirectionSet(volatile uint8* port_reg, DioPinEnum_t channel, DioPinDirectionEnum_t direction)
+{
+
+	switch(direction)
+ 1b6:	44 23       	and	r20, r20
+ 1b8:	19 f0       	breq	.+6      	; 0x1c0 <Dio_ChannelDirectionSet+0xa>
+ 1ba:	41 30       	cpi	r20, 0x01	; 1
+ 1bc:	71 f0       	breq	.+28     	; 0x1da <Dio_ChannelDirectionSet+0x24>
+ 1be:	08 95       	ret
+	{
+		case DIO_INPUT:
+			CLEAR_BIT(*port_reg, channel);
+ 1c0:	fc 01       	movw	r30, r24
+ 1c2:	40 81       	ld	r20, Z
+ 1c4:	21 e0       	ldi	r18, 0x01	; 1
+ 1c6:	30 e0       	ldi	r19, 0x00	; 0
+ 1c8:	02 c0       	rjmp	.+4      	; 0x1ce <Dio_ChannelDirectionSet+0x18>
+ 1ca:	22 0f       	add	r18, r18
+ 1cc:	33 1f       	adc	r19, r19
+ 1ce:	6a 95       	dec	r22
+ 1d0:	e2 f7       	brpl	.-8      	; 0x1ca <Dio_ChannelDirectionSet+0x14>
+ 1d2:	20 95       	com	r18
+ 1d4:	24 23       	and	r18, r20
+ 1d6:	20 83       	st	Z, r18
+			break;
+ 1d8:	08 95       	ret
+		case DIO_OUTPUT:
+			SET_BIT(*port_reg, channel);
+ 1da:	fc 01       	movw	r30, r24
+ 1dc:	40 81       	ld	r20, Z
+ 1de:	21 e0       	ldi	r18, 0x01	; 1
+ 1e0:	30 e0       	ldi	r19, 0x00	; 0
+ 1e2:	02 c0       	rjmp	.+4      	; 0x1e8 <Dio_ChannelDirectionSet+0x32>
+ 1e4:	22 0f       	add	r18, r18
+ 1e6:	33 1f       	adc	r19, r19
+ 1e8:	6a 95       	dec	r22
+ 1ea:	e2 f7       	brpl	.-8      	; 0x1e4 <Dio_ChannelDirectionSet+0x2e>
+ 1ec:	24 2b       	or	r18, r20
+ 1ee:	20 83       	st	Z, r18
+ 1f0:	08 95       	ret
+
+000001f2 <Dio_ChannelRead>:
+}
+
+
+DioPinStateEnum_t Dio_ChannelRead(volatile uint8* port_reg, DioPinEnum_t channel)
+{
+	DioPinStateEnum_t u8LocalPinValue = READ_BIT(*port_reg, channel);
+ 1f2:	fc 01       	movw	r30, r24
+ 1f4:	40 81       	ld	r20, Z
+ 1f6:	81 e0       	ldi	r24, 0x01	; 1
+ 1f8:	90 e0       	ldi	r25, 0x00	; 0
+ 1fa:	9c 01       	movw	r18, r24
+ 1fc:	06 2e       	mov	r0, r22
+ 1fe:	02 c0       	rjmp	.+4      	; 0x204 <Dio_ChannelRead+0x12>
+ 200:	22 0f       	add	r18, r18
+ 202:	33 1f       	adc	r19, r19
+ 204:	0a 94       	dec	r0
+ 206:	e2 f7       	brpl	.-8      	; 0x200 <Dio_ChannelRead+0xe>
+ 208:	84 2f       	mov	r24, r20
+ 20a:	90 e0       	ldi	r25, 0x00	; 0
+ 20c:	82 23       	and	r24, r18
+ 20e:	93 23       	and	r25, r19
+ 210:	02 c0       	rjmp	.+4      	; 0x216 <Dio_ChannelRead+0x24>
+ 212:	96 95       	lsr	r25
+ 214:	87 95       	ror	r24
+ 216:	6a 95       	dec	r22
+ 218:	e2 f7       	brpl	.-8      	; 0x212 <Dio_ChannelRead+0x20>
+	return (u8LocalPinValue);
+}
  21a:	08 95       	ret
 
 0000021c <_exit>:

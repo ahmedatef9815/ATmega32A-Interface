@@ -1,5 +1,7 @@
-SW.d SW.o: .././SW.c .././SW.h .././DIO.h .././Std_Types.h \
- .././ATmega32A_Configuration.h \
+HAL/StepperMotor/StepperMotor.d HAL/StepperMotor/StepperMotor.o: \
+ ../HAL/StepperMotor/StepperMotor.c ../HAL/StepperMotor/StepperMotor.h \
+ ../MCAL/DIO/DIO.h ../Utilities/Std_Types.h \
+ ../Utilities/ATmega32A_Configuration.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -7,13 +9,13 @@ SW.d SW.o: .././SW.c .././SW.h .././DIO.h .././Std_Types.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././SW.h:
+../HAL/StepperMotor/StepperMotor.h:
 
-.././DIO.h:
+../MCAL/DIO/DIO.h:
 
-.././Std_Types.h:
+../Utilities/Std_Types.h:
 
-.././ATmega32A_Configuration.h:
+../Utilities/ATmega32A_Configuration.h:
 
 d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 

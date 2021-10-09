@@ -2,11 +2,11 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-DIO.c
+HAL\StepperMotor\StepperMotor.c
+
+HAL\SW\SW.c
 
 main.c
 
-StepperMotor.c
-
-SW.c
+MCAL\DIO\DIO.c
 
