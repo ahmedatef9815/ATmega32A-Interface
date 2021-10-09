@@ -1,5 +1,6 @@
-SSD.d SSD.o: .././SSD.c .././DIO.h .././Std_Types.h .././SSD.h \
- .././ATmega32A_Configuration.h \
+HAL/SSD/SSD.d HAL/SSD/SSD.o: ../HAL/SSD/SSD.c ../MCAL/DIO/DIO.h \
+ ../Utilities/Std_Types.h ../HAL/SSD/SSD.h \
+ ../Utilities/ATmega32A_Configuration.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -7,13 +8,13 @@ SSD.d SSD.o: .././SSD.c .././DIO.h .././Std_Types.h .././SSD.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././DIO.h:
+../MCAL/DIO/DIO.h:
 
-.././Std_Types.h:
+../Utilities/Std_Types.h:
 
-.././SSD.h:
+../HAL/SSD/SSD.h:
 
-.././ATmega32A_Configuration.h:
+../Utilities/ATmega32A_Configuration.h:
 
 d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 

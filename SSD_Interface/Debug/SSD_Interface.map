@@ -3,31 +3,31 @@ Archive member included to satisfy reference by file (symbol)
 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o (exit)
 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
-                              SSD.o (__do_copy_data)
+                              HAL/SSD/SSD.o (__do_copy_data)
 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
-                              SSD.o (__umulhisi3)
+                              HAL/SSD/SSD.o (__umulhisi3)
 
 Discarded input sections
 
  .data          0x00000000        0x0 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .bss           0x00000000        0x0 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .text          0x00000000        0x0 DIO.o
- .data          0x00000000        0x0 DIO.o
- .bss           0x00000000        0x0 DIO.o
- .text.Dio_ChannelRead
-                0x00000000       0x2a DIO.o
- .text.Dio_ChannelToggle
-                0x00000000       0x18 DIO.o
- .text.Dio_PortWrite
-                0x00000000        0x6 DIO.o
- .text.Dio_PortRead
-                0x00000000        0x6 DIO.o
+ .text          0x00000000        0x0 HAL/SSD/SSD.o
+ .data          0x00000000        0x0 HAL/SSD/SSD.o
+ .bss           0x00000000        0x0 HAL/SSD/SSD.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text          0x00000000        0x0 SSD.o
- .data          0x00000000        0x0 SSD.o
- .bss           0x00000000        0x0 SSD.o
+ .text          0x00000000        0x0 MCAL/DIO/DIO.o
+ .data          0x00000000        0x0 MCAL/DIO/DIO.o
+ .bss           0x00000000        0x0 MCAL/DIO/DIO.o
+ .text.Dio_ChannelRead
+                0x00000000       0x2a MCAL/DIO/DIO.o
+ .text.Dio_ChannelToggle
+                0x00000000       0x18 MCAL/DIO/DIO.o
+ .text.Dio_PortWrite
+                0x00000000        0x6 MCAL/DIO/DIO.o
+ .text.Dio_PortRead
+                0x00000000        0x6 MCAL/DIO/DIO.o
  .text          0x00000000        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -90,9 +90,9 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
-LOAD DIO.o
+LOAD HAL/SSD/SSD.o
 LOAD main.o
-LOAD SSD.o
+LOAD MCAL/DIO/DIO.o
 START GROUP
 LOAD d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -282,23 +282,23 @@ END GROUP
                 0x0000007e                __vector_20
                 0x00000082                . = ALIGN (0x2)
  *(.text.*)
- .text.Dio_ChannelDirectionSet
-                0x00000082       0x3c DIO.o
-                0x00000082                Dio_ChannelDirectionSet
- .text.Dio_ChannelWrite
-                0x000000be       0x3c DIO.o
-                0x000000be                Dio_ChannelWrite
- .text.main     0x000000fa        0xe main.o
-                0x000000fa                main
  .text.SSD_Init
-                0x00000108       0x1e SSD.o
-                0x00000108                SSD_Init
+                0x00000082       0x1e HAL/SSD/SSD.o
+                0x00000082                SSD_Init
  .text.SSD_Number_Display
-                0x00000126       0x6c SSD.o
-                0x00000126                SSD_Number_Display
+                0x000000a0       0x6c HAL/SSD/SSD.o
+                0x000000a0                SSD_Number_Display
  .text.SSD_Number_Set
-                0x00000192       0xb0 SSD.o
-                0x00000192                SSD_Number_Set
+                0x0000010c       0xb0 HAL/SSD/SSD.o
+                0x0000010c                SSD_Number_Set
+ .text.main     0x000001bc        0xe main.o
+                0x000001bc                main
+ .text.Dio_ChannelDirectionSet
+                0x000001ca       0x3c MCAL/DIO/DIO.o
+                0x000001ca                Dio_ChannelDirectionSet
+ .text.Dio_ChannelWrite
+                0x00000206       0x3c MCAL/DIO/DIO.o
+                0x00000206                Dio_ChannelWrite
  .text.libgcc.mul
                 0x00000242       0x1e d:/microship studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
                 0x00000242                __umulhisi3
@@ -337,7 +337,7 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.gau8SSD_arr
-                0x00800060        0xa SSD.o
+                0x00800060        0xa HAL/SSD/SSD.o
                 0x00800060                gau8SSD_arr
  *(.gnu.linkonce.r*)
                 0x0080006a                . = ALIGN (0x2)
@@ -399,10 +399,10 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 DIO.o
+ .comment       0x00000000       0x30 HAL/SSD/SSD.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 main.o
- .comment       0x00000030       0x31 SSD.o
+ .comment       0x00000030       0x31 MCAL/DIO/DIO.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c
@@ -427,11 +427,11 @@ END GROUP
 .debug_aranges  0x00000000       0x98
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 DIO.o
+                0x00000000       0x30 HAL/SSD/SSD.o
  .debug_aranges
-                0x00000048       0x20 main.o
+                0x00000030       0x20 main.o
  .debug_aranges
-                0x00000068       0x30 SSD.o
+                0x00000050       0x48 MCAL/DIO/DIO.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -439,44 +439,44 @@ END GROUP
 .debug_info     0x00000000      0xcdb
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_info    0x000004e6      0x2a2 DIO.o
- .debug_info    0x00000788       0xdd main.o
- .debug_info    0x00000865      0x476 SSD.o
+ .debug_info    0x000004e6      0x476 HAL/SSD/SSD.o
+ .debug_info    0x0000095c       0xdd main.o
+ .debug_info    0x00000a39      0x2a2 MCAL/DIO/DIO.o
 
 .debug_abbrev   0x00000000      0x767
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_abbrev  0x000004a3       0xd3 DIO.o
- .debug_abbrev  0x00000576       0x7f main.o
- .debug_abbrev  0x000005f5      0x172 SSD.o
+ .debug_abbrev  0x000004a3      0x172 HAL/SSD/SSD.o
+ .debug_abbrev  0x00000615       0x7f main.o
+ .debug_abbrev  0x00000694       0xd3 MCAL/DIO/DIO.o
 
-.debug_line     0x00000000      0x3fb
+.debug_line     0x00000000      0x439
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_line    0x00000116       0xf2 DIO.o
- .debug_line    0x00000208       0x50 main.o
- .debug_line    0x00000258      0x1a3 SSD.o
+ .debug_line    0x00000116      0x1c2 HAL/SSD/SSD.o
+ .debug_line    0x000002d8       0x5b main.o
+ .debug_line    0x00000333      0x106 MCAL/DIO/DIO.o
 
 .debug_frame    0x00000000       0xf0
  *(.debug_frame)
- .debug_frame   0x00000000       0x74 DIO.o
- .debug_frame   0x00000074       0x24 main.o
- .debug_frame   0x00000098       0x58 SSD.o
+ .debug_frame   0x00000000       0x58 HAL/SSD/SSD.o
+ .debug_frame   0x00000058       0x24 main.o
+ .debug_frame   0x0000007c       0x74 MCAL/DIO/DIO.o
 
-.debug_str      0x00000000      0x56a
+.debug_str      0x00000000      0x577
  *(.debug_str)
  .debug_str     0x00000000      0x196 D:/Microship Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_str     0x00000196      0x2c7 DIO.o
-                                0x2f5 (size before relaxing)
- .debug_str     0x0000045d       0x29 main.o
+ .debug_str     0x00000196      0x304 HAL/SSD/SSD.o
+                                0x33f (size before relaxing)
+ .debug_str     0x0000049a       0x11 main.o
                                 0x1c9 (size before relaxing)
- .debug_str     0x00000486       0xe4 SSD.o
-                                0x339 (size before relaxing)
+ .debug_str     0x000004ab       0xcc MCAL/DIO/DIO.o
+                                0x2fc (size before relaxing)
 
 .debug_loc      0x00000000      0x286
  *(.debug_loc)
- .debug_loc     0x00000000       0xc4 DIO.o
- .debug_loc     0x000000c4      0x1c2 SSD.o
+ .debug_loc     0x00000000      0x1c2 HAL/SSD/SSD.o
+ .debug_loc     0x000001c2       0xc4 MCAL/DIO/DIO.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -498,9 +498,9 @@ END GROUP
 
 .debug_ranges   0x00000000       0x68
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x38 DIO.o
- .debug_ranges  0x00000038       0x10 main.o
- .debug_ranges  0x00000048       0x20 SSD.o
+ .debug_ranges  0x00000000       0x20 HAL/SSD/SSD.o
+ .debug_ranges  0x00000020       0x10 main.o
+ .debug_ranges  0x00000030       0x38 MCAL/DIO/DIO.o
 
 .debug_macro
  *(.debug_macro)
