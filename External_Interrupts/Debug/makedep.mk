@@ -2,13 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-DIO.c
+HAL\LED\LED.c
 
-External_Interuppts.c
-
-LED.c
+HAL\SW\SW.c
 
 main.c
 
-SW.c
+MCAL\DIO\DIO.c
+
+MCAL\External_Interrupts\External_Interuppts.c
 

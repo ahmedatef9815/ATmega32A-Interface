@@ -1,4 +1,8 @@
-main.d main.o: .././main.c .././External_Interrupts.h \
+main.d main.o: .././main.c \
+ ../MCAL/External_Interrupts/External_Interrupts.h ../HAL/LED/LED.h \
+ ../MCAL/DIO/DIO.h ../Utilities/Std_Types.h \
+ ../Utilities/ATmega32A_Configuration.h ../Utilities/Std_Types.h \
+ ../HAL/SW/SW.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -10,11 +14,21 @@ main.d main.o: .././main.c .././External_Interrupts.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
- d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- .././LED.h .././DIO.h .././Std_Types.h .././ATmega32A_Configuration.h \
- .././SW.h
+ d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
 
-.././External_Interrupts.h:
+../MCAL/External_Interrupts/External_Interrupts.h:
+
+../HAL/LED/LED.h:
+
+../MCAL/DIO/DIO.h:
+
+../Utilities/Std_Types.h:
+
+../Utilities/ATmega32A_Configuration.h:
+
+../Utilities/Std_Types.h:
+
+../HAL/SW/SW.h:
 
 d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
@@ -39,13 +53,3 @@ d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\versi
 d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
 d:\microship\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
-
-.././LED.h:
-
-.././DIO.h:
-
-.././Std_Types.h:
-
-.././ATmega32A_Configuration.h:
-
-.././SW.h:
